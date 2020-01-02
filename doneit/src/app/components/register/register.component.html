@@ -1,7 +1,17 @@
 <h1>Registrati</h1>
 
-<div>
-    <label>Username: <input name = "username" type="text" [(ngModel)] = 'username'></label>
-    <label>Password: <input name = "password" type="password" [(ngModel)] = 'password'></label>
-    <button type="button" (click) = 'handleRegister()'>Registrati</button>
+<div class="container">
+    <form (ngSubmit)="handleRegister()" #loginForm="ngForm">
+        <!-- <div class="alert alert-warning" *ngIf='invalidArguments'>{{errorMessage}}</div> -->
+        <fieldset class="form-group">
+            <label>Username: </label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="user.username">
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Password: </label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="user.password">
+        </fieldset>
+        <button type="submit" class="btn btn-success">Login</button>
+    </form>
 </div>
