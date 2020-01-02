@@ -1,16 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule} from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './components/login/login.component';
+import { ErrorComponent } from './components/error/error.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HomepageComponent } from './components/homepage/homepage.component';
+import { HomeComponent } from './components/home/home.component';
+import { TodoBoardComponent } from './components/home/todo-board/todo-board.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    ErrorComponent,
+    RegisterComponent,
+    HomepageComponent,
+    HomeComponent,
+    TodoBoardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
