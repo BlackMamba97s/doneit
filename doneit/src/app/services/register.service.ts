@@ -13,7 +13,7 @@ export class RegisterService {
 
 
   executeUserRegistration(user: User){
-    return this.httpClient.post<any>("http://localhost:8080/register-user", user);
+    return this.httpClient.post<ResponseMessage>("http://localhost:8080/register-user", user);
   }
 
 }

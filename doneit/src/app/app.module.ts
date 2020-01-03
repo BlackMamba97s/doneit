@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './components/home/home.component';
 import { TodoBoardComponent } from './components/home/todo-board/todo-board.component';
+import { LogoutComponent } from './components/home/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TodoBoardComponent } from './components/home/todo-board/todo-board.comp
     ErrorComponent,
     RegisterComponent,
     HomeComponent,
-    TodoBoardComponent
+    TodoBoardComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

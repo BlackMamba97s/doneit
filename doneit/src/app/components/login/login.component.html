@@ -1,6 +1,11 @@
 <h1>Login</h1>
 <p>Effettua il Login oppure <a routerLink='/register'>registrati</a> </p>
 
+<div *ngIf='errorLogin'>
+    {{errorLogin}}
+</div>
+
+
 <div class="container">
     <form (ngSubmit)="handleLogin()" #loginForm="ngForm">
         <!-- <div class="alert alert-warning" *ngIf='invalidArguments'>{{errorMessage}}</div> -->

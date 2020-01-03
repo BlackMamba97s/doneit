@@ -1,5 +1,9 @@
 <h1>Registrati</h1>
 
+<div *ngIf='errorRegister'>
+    {{errorRegister}}
+</div>
+
 <div class="container">
     <form (ngSubmit)="handleRegister()" #loginForm="ngForm">
         <!-- <div class="alert alert-warning" *ngIf='invalidArguments'>{{errorMessage}}</div> -->

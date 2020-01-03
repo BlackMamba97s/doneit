@@ -4,7 +4,7 @@ import { LoginAuthenticationService } from 'src/app/services/login-authenticatio
 import { Router } from '@angular/router';
 import { MessageCode } from 'src/app/models/response-message/message-code';
 import { ResponseMessage } from 'src/app/models/response-message/response-message';
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+
 
 @Component({
   selector: 'app-login',
@@ -13,32 +13,48 @@ import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 })
 export class LoginComponent implements OnInit {
 
-  user = new User('', '');
-  responseMessage = new ResponseMessage('', new MessageCode())
-  constructor(private loginAuth: LoginAuthenticationService, private router: Router) {}
+  errorLogin: string
+  errorCode: number
+  user = new User('', '')
+  responseMessage: ResponseMessage
+
+  constructor(private loginAuth: LoginAuthenticationService, private router: Router) { }
 
   ngOnInit() {
+    if (this.loginAuth.isUserLoggedIn()) {
+      this.router.navigate(['home'])
+    }
   }
 
-  handleLogin(){
+  handleLogin() {
     console.log(this.user)
     this.loginAuth.executeLoginAuthentication(this.user).subscribe(
-      response => {
-        let ciao: string = response.getMessage()
-        console.log(ciao)
-        //console.log(this.responseMessage.getMessageCode())
-        this.createUserSession()
-        this.router.navigate(['home'])
+      data => {
+        this.handleResponse(data);
       },
       error => {
-        alert("errore")
+        this.errorLogin = 'Impossibile effettuare il login. Ci scusiamo per il disagio.'
       }
     );
   }
 
-
-  createUserSession(){
-    sessionStorage.setItem("username", this.user.getUsername());
+  createUserSession() {
+    sessionStorage.setItem("username", this.user.getUsername())
   }
 
+  handleResponse(data) {
+    this.responseMessage = data;
+    this.errorCode = this.responseMessage.messageCode;
+    switch (this.errorCode) {
+      case MessageCode.INVALID_CREDENTIAL:
+        console.log("nome utente o password errati")
+        this.errorLogin = this.responseMessage.message
+        break
+      case MessageCode.SUCCESSFUL_LOGIN:
+        console.log("Login effettuato con successo");
+        this.createUserSession()
+        this.router.navigate(['home'])
+        break
+    }
+  }
 }
