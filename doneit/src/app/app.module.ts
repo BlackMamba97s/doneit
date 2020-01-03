@@ -8,7 +8,6 @@ import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { HomepageComponent } from './components/homepage/homepage.component';
 import { HomeComponent } from './components/home/home.component';
 import { TodoBoardComponent } from './components/home/todo-board/todo-board.component';
 
@@ -18,7 +17,6 @@ import { TodoBoardComponent } from './components/home/todo-board/todo-board.comp
     LoginComponent,
     ErrorComponent,
     RegisterComponent,
-    HomepageComponent,
     HomeComponent,
     TodoBoardComponent
   ],
