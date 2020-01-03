@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
 
   createUserSession() {
     sessionStorage.setItem("username", this.user.getUsername())
+    sessionStorage.setItem("token", `Bearer ${this.responseMessage.token}`)
   }
 
   handleResponse(data) {
@@ -51,7 +52,8 @@ export class LoginComponent implements OnInit {
         this.errorLogin = this.responseMessage.message
         break
       case MessageCode.SUCCESSFUL_LOGIN:
-        console.log("Login effettuato con successo");
+        console.log("Login effettuato con successo")
+        console.log(this.responseMessage)
         this.createUserSession()
         this.router.navigate(['home'])
         break
