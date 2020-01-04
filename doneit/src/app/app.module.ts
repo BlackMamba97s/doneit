@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TodoBoardComponent } from './components/home/todo-board/todo-board.component';
 import { LogoutComponent } from './components/home/logout/logout.component';
 import { HttpInterceptorService } from './services/http-interceptor.service';
+import { TodoComponent } from './components/todo/todo.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
     RegisterComponent,
     HomeComponent,
     TodoBoardComponent,
-    LogoutComponent
+    LogoutComponent,
+    TodoComponent
   ],
   imports: [
     BrowserModule,

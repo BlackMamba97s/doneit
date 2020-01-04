@@ -1,0 +1,15 @@
+<h1>Crea Todo</h1>
+<div class="container">
+    <form (ngSubmit) = 'handleTodoCreation()'>
+        <fieldset class="form-group">
+            <label>Titolo: </label>
+            <input type="text" class="form-control" name="title" [(ngModel)] = 'todo.title'>
+        </fieldset>
+
+        <fieldset class="form-group">
+            <label>Descrizione: </label>
+            <input type="text" class="form-control" name="description" [(ngModel)] = 'todo.description'>
+        </fieldset>
+        <button type="submit" class="btn btn-success">Conferma</button>
+    </form>
+</div>
