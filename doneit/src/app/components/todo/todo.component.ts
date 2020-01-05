@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-todo',
@@ -9,10 +10,17 @@ import { TodoService } from 'src/app/services/todo.service';
 export class TodoComponent implements OnInit {
 
   private todo: Todo = new Todo()
+  private todoId: number
 
-  constructor(private todoService: TodoService) { }
+  constructor(private todoService: TodoService, private activatedRoute: ActivatedRoute, private router: Router) { }
+
 
   ngOnInit() {
+    this.todoId = this.activatedRoute.snapshot.params['id']
+    if(this.todoId){ // se todoId è undefined vuol dire che si vuole creare un TODO
+      this.retrieveTodo(this.todoId)
+    }
+    
   }
 
 
@@ -23,6 +31,28 @@ export class TodoComponent implements OnInit {
       },
       error => {
 
+      }
+    )
+  }
+
+  handleTodoUpdate(){
+    this.todoService.updateTodo(this.todo).subscribe(
+      response => {
+        this.router.navigate(['home'])
+      },
+      error => {
+        console.log(error)
+      }
+    )
+  }
+
+  retrieveTodo(todoId){
+    this.todoService.getTodo(todoId).subscribe(
+      response => {
+        this.todo = response
+      },
+      error => {
+        console.log(error)
       }
     )
   }
