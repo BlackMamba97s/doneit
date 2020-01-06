@@ -14,6 +14,7 @@ import { LogoutComponent } from './components/home/logout/logout.component';
 import { HttpInterceptorService } from './services/http-interceptor.service';
 import { TodoComponent } from './components/todo/todo.component';
 import { ListTodoComponent } from './components/list-todo/list-todo.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ListTodoComponent } from './components/list-todo/list-todo.component';
     TodoBoardComponent,
     LogoutComponent,
     TodoComponent,
-    ListTodoComponent
+    ListTodoComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
