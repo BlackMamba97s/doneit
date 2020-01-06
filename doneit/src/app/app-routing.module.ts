@@ -6,6 +6,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { RouteGuardService } from './services/route-guard.service';
 import { HomeComponent } from './components/home/home.component';
 import { TodoComponent } from './components/todo/todo.component';
+import { LogoutComponent } from './components/home/logout/logout.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent, canActivate: [RouteGuardService]},
   {path: 'update-todo/:id', component: TodoComponent, canActivate: [RouteGuardService]},
+  {path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService]},
   // {path: 'register', component: RegisterComponent, canActivate: [RouteGuardService]},
   {path: '**', component: ErrorComponent}
 ];
