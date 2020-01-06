@@ -21,17 +21,14 @@ export class NavbarComponent implements OnInit {
 
   }
 
-  selectActiveButton() {
-    let currentPath = this.route.snapshot.routeConfig.path;
-    switch (currentPath) {
-      case "create-todo": this.createTodo = 1
-        break
-      case "home": this.home = 1
-        break
-    }
+  activeHome(){
+    this.createTodo = 0
+    this.home = 1
   }
 
-  test(){
-    this.selectActiveButton()
+  activeTodo(){
+    this.home = 0
+    this.createTodo = 1
+
   }
 }

@@ -1,19 +1,17 @@
-<h1 *ngIf="!todoId">Crea Todo</h1>
-
-
 <div *ngIf="!todoId" class="container">
-    <form (ngSubmit) = 'handleTodoCreation()'>
+    <h1 *ngIf="!todoId">Crea Todo</h1>
+    <form (ngSubmit)='handleTodoCreation()'>
         <fieldset class="form-group">
             <label>Titolo: </label>
-            <input type="text" class="form-control" name="title" [(ngModel)] = 'todo.title'>
+            <input type="text" class="form-control" name="title" [(ngModel)]='todo.title'>
         </fieldset>
 
         <fieldset class="form-group">
             <label>Descrizione: </label>
-            <input type="text" class="form-control" name="description" [(ngModel)] = 'todo.description'>
+            <input type="text" class="form-control" name="description" [(ngModel)]='todo.description'>
         </fieldset>
         <button *ngIf="!todoId" type="submit" class="btn btn-success">Conferma</button>
-       
+
     </form>
 </div>
 
@@ -21,15 +19,15 @@
 <h1 *ngIf="todoId">Aggiorna Todo</h1>
 
 <div class="container">
-    <form *ngIf="todoId" (ngSubmit) = 'handleTodoUpdate()'>
+    <form *ngIf="todoId" (ngSubmit)='handleTodoUpdate()'>
         <fieldset class="form-group">
             <label>Titolo: </label>
-            <input type="text" class="form-control" name="title" [(ngModel)] = 'todo.title'>
+            <input type="text" class="form-control" name="title" [(ngModel)]='todo.title'>
         </fieldset>
 
         <fieldset class="form-group">
             <label>Descrizione: </label>
-            <input type="text" class="form-control" name="description" [(ngModel)] = 'todo.description'>
+            <input type="text" class="form-control" name="description" [(ngModel)]='todo.description'>
         </fieldset>
         <button *ngIf="todoId" type="submit" class="btn btn-success">Aggiorna</button>
     </form>
