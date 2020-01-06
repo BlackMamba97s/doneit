@@ -6,7 +6,7 @@
 }
 
 .navbar .dropdown-menu a:hover {
-    color: #616161 !important;
+    background-color: #01579b !important;
 }
 .darken-grey-text {
     color: #2E2E2E;

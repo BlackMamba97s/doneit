@@ -15,6 +15,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent, canActivate: [RouteGuardService]},
   {path: 'update-todo/:id', component: TodoComponent, canActivate: [RouteGuardService]},
+  {path: 'create-todo', component: TodoComponent, canActivate: [RouteGuardService]},
   {path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService]},
   // {path: 'register', component: RegisterComponent, canActivate: [RouteGuardService]},
   {path: '**', component: ErrorComponent}
