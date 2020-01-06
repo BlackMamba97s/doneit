@@ -15,7 +15,7 @@ export class ListTodoComponent implements OnInit {
   constructor(private todoService: TodoService, private router: Router) { }
 
   ngOnInit() {
-  
+    this.showTodo()
   }
 
   showTodo(){

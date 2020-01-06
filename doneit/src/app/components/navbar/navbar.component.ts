@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RouterLink, ActivatedRoute } from '@angular/router';
+import { LoginAuthenticationService } from 'src/app/services/login-authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  private isUserLogged
+  private createTodo = 0
+  private home = 0
 
-  ngOnInit() {
+  constructor(private route: ActivatedRoute, private userAuth: LoginAuthenticationService) {
+
   }
 
+  ngOnInit() {
+
+  }
+
+  selectActiveButton() {
+    let currentPath = this.route.snapshot.routeConfig.path;
+    switch (currentPath) {
+      case "create-todo": this.createTodo = 1
+        break
+      case "home": this.home = 1
+        break
+    }
+  }
+
+  test(){
+    this.selectActiveButton()
+  }
 }
