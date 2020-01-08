@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import {FormsModule} from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +16,8 @@ import { HttpInterceptorService } from './services/http-interceptor.service';
 import { TodoComponent } from './components/todo/todo.component';
 import { ListTodoComponent } from './components/list-todo/list-todo.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -27,13 +30,15 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     LogoutComponent,
     TodoComponent,
     ListTodoComponent,
-    NavbarComponent
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }

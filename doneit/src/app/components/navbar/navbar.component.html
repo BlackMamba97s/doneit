@@ -1,63 +1,6 @@
-<!-- 
-<nav *ngIf="userAuth.isUserLoggedIn()" class="mb-1 navbar navbar-expand-lg navbar-dark light-blue darken-4 lighten-1">
-  <a class="navbar-brand" href="#">DoneIt</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
-    aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
-    <ul class="navbar-nav mr-auto">
-      <li class [ngClass]="{'nav-item': true, 'active': home}">
-        <a class="nav-link" routerLink="/home" (click)="activeHome()">Home
-        </a>
-      </li>
-      <li [ngClass]="{'nav-item': true, 'active': createTodo}">
-        <a class="nav-link" routerLink="/create-todo" (click)="activeTodo()">Crea Todo</a>
-      </li>
-    </ul>
-    <ul class="navbar-nav nav-flex-icons">
-      <form class="form-inline" id="searchbar-form">
-        <div id="searchbar" class="md-form my-0">
-          <input id="search-input" class="form-control" type="text" placeholder="Cerca" aria-label="Search">
-          <i class="fa fa-search text-white ml-3" aria-hidden="true"></i>
-        </div>
-      </form>
-    </ul>
-    <ul class="navbar-nav ml-auto nav-flex-icons">
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light">1 <i class="fa fa-bell"></i></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link waves-effect waves-light">1 <i class="fa fa-envelope"></i></a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown" aria-haspopup="true"
-          aria-expanded="false">Pippo Franco
-        </a>
-        <div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-555">
-          <a class="dropdown-item" routerLink="/list-todos">Il mio profilo</a>
-          <a class="dropdown-item" routerLink="/list-todos">I miei Todo</a>
-          <a class="dropdown-item" routerLink="/logout">Logout</a>
-        </div>
-      </li>
-      <li class="nav-item avatar">
-        <a class="nav-link p-0" href="#">
-          <img src="https://start.unito.it/images/showroom/details/Demo.png" class="rounded-circle z-depth-0"
-            alt="avatar image" height="35">
-        </a>
-      </li>
-    </ul>
-
-
-
-
-  </div>
-</nav> -->
-
-
 <!--Navbar -->
-<nav *ngIf="userAuth.isUserLoggedIn()" class="mb-1 navbar navbar-expand-lg navbar-dark light-blue darken-4 lighten-1">
-  <a class="navbar-brand" href="#">Navbar</a>
+<nav *ngIf="userAuth.isUserLoggedIn()" class="mb-1 navbar navbar-expand-lg navbar-dark light-blue darken-3 lighten-1">
+  <a class="navbar-brand" href="#">Done It</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
     aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -91,7 +34,7 @@
           <a class="nav-link waves-effect waves-light">1 <i class="fa fa-envelope"></i></a>
         </li>
       </ul>
-      <ul class = "navbar-nav mr-auto nav-flex-icons">
+      <ul class="navbar-nav mr-auto nav-flex-icons">
         <li class="nav-item dropdown"></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
@@ -105,8 +48,9 @@
         </li>
         <li class="nav-item avatar">
           <a class="nav-link p-0" href="#">
-            <img src="https://www.unito.it/sites/default/files/styles/paragrafo/public/ugovunito/foto/2041101-gr-picture.jpg?itok=ie5QqutH" class="rounded-circle z-depth-0"
-              alt="avatar image" height="35">
+            <img
+              src="https://www.unito.it/sites/default/files/styles/paragrafo/public/ugovunito/foto/2041101-gr-picture.jpg?itok=ie5QqutH"
+              class="rounded-circle z-depth-0" alt="avatar image" height="35">
           </a>
         </li>
       </ul>

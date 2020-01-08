@@ -1,18 +1,78 @@
+<div class="card">
+    <div class="card-body">
+        <div class="card-text">
+            <div class="container">
+                <!-- Material input -->
+                <!-- Default form register -->
+                <form (ngSubmit)="handleRegister()" #loginForm="ngForm" class="text-center">
+
+                    <p class="h6">Non hai un account? Registrati</p>
+
+                    <div class="form-row mb-4">
+                        <div class="col">
+                            <!-- First name -->
+                            <input type="text" id="defaultRegisterFormFirstName" class="form-control"
+                                placeholder="Nome">
+                        </div>
+                        <div class="col">
+                            <!-- Last name -->
+                            <input type="text" id="defaultRegisterFormLastName" class="form-control"
+                                placeholder="Cognome">
+                        </div>
+                    </div>
+
+                    <input type="text" class="form-control mb-4" name="username" [(ngModel)]="user.username"
+                        placeholder="Username">
+
+                    <!-- E-mail -->
+                    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+
+                    <!-- Password -->
+                    <input type="password" name="password" [(ngModel)]="user.password" id="defaultRegisterFormPassword"
+                        class="form-control" placeholder="Password"
+                        aria-describedby="defaultRegisterFormPasswordHelpBlock">
+                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+                        Almeno 8 caratteri e un numero
+                    </small>
+
+                    <!-- Phone number -->
+                    <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number"
+                        aria-describedby="defaultRegisterFormPhoneHelpBlock">
+                    <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
+                        Opzionale
+                    </small>
+
+                    <!-- Sign up button -->
+                    <button type="submit" class="btn btn-success my-4 btn-block">Registrati</button>
+
+                    <!-- Social register -->
+
+                    <hr>
+
+                    <!-- Terms of service -->
+                    <p>By clicking
+                        <em>Sign up</em> you agree to our
+                        <a href="" target="_blank">terms of service</a>
+
+                </form>
+                <!-- Default form register -->
+            </div>
+
+        </div>
 
 
-<div class="container">
-    <h1>Registrati</h1>
-    <form (ngSubmit)="handleRegister()" #loginForm="ngForm">
-        <div class="alert alert-warning" *ngIf='errorRegister'>{{errorRegister}}</div> 
-        <fieldset class="form-group">
-            <label>Username: </label>
-            <input type="text" class="form-control" name="username" [(ngModel)]="user.username">
-        </fieldset>
 
-        <fieldset class="form-group">
-            <label>Password: </label>
-            <input type="password" class="form-control" name="password" [(ngModel)]="user.password">
-        </fieldset>
-        <button type="submit" class="btn btn-success">Registrati</button>
-    </form>
-</div>
+
+        <!-- <form (ngSubmit)="handleRegister()" #loginForm="ngForm">
+                <div class="alert alert-warning" *ngIf='errorRegister'>{{errorRegister}}</div>
+                <fieldset class="form-group">
+                    <label>Username: </label>
+                    <input type="text" class="form-control" name="username" [(ngModel)]="user.username">
+                </fieldset>
+
+                <fieldset class="form-group">
+                    <label>Password: </label>
+                    <input type="password" class="form-control" name="password" [(ngModel)]="user.password">
+                </fieldset>
+                <button type="submit" class="btn btn-success">Registrati</button>
+            </form> -->
