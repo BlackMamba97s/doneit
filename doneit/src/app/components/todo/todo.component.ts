@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/models/user/user.model';
 
 @Component({
   selector: 'app-todo',
@@ -66,6 +67,7 @@ export class Todo {
   title: string
   description: string
   publishedDate: Date
+  user: User
 
   constructor() { }
 

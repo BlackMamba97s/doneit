@@ -1,1 +1,20 @@
-<p>todo-board works!</p>
+<div class="container" *ngIf="todoList">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Proprietario</th>
+                <th>Titolo</th>
+                <th>Descrizione</th>
+                <th>Data pubblicazione</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let t of todoList">
+                <td>{{t.user.username}}</td>
+                <td>{{t.title}}</td>
+                <td>{{t.description}}</td>
+                <td>{{t.publishedDate | date:'dd/MM/yyyy, HH:mm'}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

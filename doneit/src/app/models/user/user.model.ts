@@ -1,7 +1,11 @@
 export class User {
+     username: string;
+     password: string;
 
-    constructor(private username,
-        private password) { }
+    constructor(username, password) { 
+        this.username = username
+        this.password = password
+    }
 
     getUsername() {
         return this.username

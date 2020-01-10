@@ -15,10 +15,10 @@ export class ListTodoComponent implements OnInit {
   constructor(private todoService: TodoService, private router: Router) { }
 
   ngOnInit() {
-    this.showTodo()
+    this.showMyTodo()
   }
 
-  showTodo(){
+  showMyTodo(){
     this.todoService.getTodoList().subscribe(
       response =>{
           this.todo = response
@@ -34,7 +34,7 @@ export class ListTodoComponent implements OnInit {
     this.todoService.deleteTodo(todoId).subscribe(
       response => {
         console.log(response)
-        this.showTodo()
+        this.showMyTodo()
       },
       error => {
         console.log(error)

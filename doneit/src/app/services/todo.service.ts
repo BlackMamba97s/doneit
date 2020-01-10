@@ -17,7 +17,7 @@ export class TodoService {
   }
 
   getTodoList(){
-    return this.httpClient.get<Todo[]>(`${API_URL}/get-todo-list`)
+    return this.httpClient.get<Todo[]>(`${API_URL}/my-todo-list`)
   }
 
   deleteTodo(todoId){
@@ -30,5 +30,9 @@ export class TodoService {
 
   updateTodo(todo){
     return this.httpClient.put<ResponseMessage>(`${API_URL}/update-todo`,todo)
+  }
+
+  getAllTodo(){
+    return this.httpClient.get<any>(`${API_URL}/all-todo-list`)
   }
 }
