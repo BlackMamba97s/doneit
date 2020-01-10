@@ -1,20 +1,14 @@
-<div class="container" *ngIf="todoList">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Proprietario</th>
-                <th>Titolo</th>
-                <th>Descrizione</th>
-                <th>Data pubblicazione</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let t of todoList">
-                <td>{{t.user.username}}</td>
-                <td>{{t.title}}</td>
-                <td>{{t.description}}</td>
-                <td>{{t.publishedDate | date:'dd/MM/yyyy, HH:mm'}}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+
+            <div *ngFor="let t of todoList">
+                <app-todo-card></app-todo-card>
+            </div>
+
+        </div>
+        <div class="col-sm-2"></div>
+
+    </div>
 </div>

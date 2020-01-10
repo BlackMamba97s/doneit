@@ -1,0 +1,41 @@
+#todo-title{
+    margin: 30px;
+}
+
+#follow-todo{
+    margin: 12px;
+}
+
+#todo-user{
+    color: black;
+    font-weight: bold;
+}
+
+#time{
+    font-size: 0.8rem;
+    color: #9e9e9e;
+}
+
+#info-todo{
+    font-size: 0.8rem;
+    color: #9e9e9e;
+}
+
+
+.container{
+    margin-top: 24px;
+}
+
+
+
+@media screen and (min-width: 1200px) { 
+    #icon-div1{
+        text-align: right !important;
+        padding: 2px !important;
+    
+    }
+    #icon-div2{
+        text-align: left !important;
+        padding: 2px !important;
+    }
+ }
