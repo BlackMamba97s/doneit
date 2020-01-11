@@ -1,5 +1,6 @@
 <!--Navbar -->
-<nav *ngIf="userAuth.isUserLoggedIn()" class="mb-1 navbar navbar-expand-lg navbar-dark light-blue darken-3 lighten-1">
+<nav *ngIf="userAuth.isUserLoggedIn()"
+  class="mb-1 navbar navbar-expand-lg sticky-top navbar-dark light-blue darken-3 lighten-1">
   <a class="navbar-brand" href="#">Done It</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
     aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,14 +8,14 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent-555">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item" [ngClass]="{'nav-item': true, 'active': home}">
+      <!-- <li class="nav-item" [ngClass]="{'nav-item': true, 'active': home}">
         <a class="nav-link" routerLink="/home" (click)="activeHome()">Home
           <span class="sr-only">(current)</span>
         </a>
       </li>
       <li class="nav-item" [ngClass]="{'nav-item': true, 'active': createTodo}">
         <a (click)="activeTodo()" class="nav-link" routerLink="/create-todo">Crea Todo</a>
-      </li>
+      </li> -->
     </ul>
 
     <ul class="navbar-nav ml-auto mr-auto">

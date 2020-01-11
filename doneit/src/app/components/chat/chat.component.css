@@ -1,0 +1,22 @@
+#test{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
+
+.btn{
+    color: black!important;
+    text-transform: none;
+}
+
+.md-avatar {
+    vertical-align: middle;
+    width: 30px;
+    height: 30px;
+    margin-right: 12px;
+  }
+
+  .scroll {
+    height: 500px;
+    overflow-y: auto;
+}

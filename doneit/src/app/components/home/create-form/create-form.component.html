@@ -1,0 +1,25 @@
+<div class="container">
+
+    <div class="dropdown">
+        <button class="btn  dropdown-toggle light-blue darken-3" type="button" id="dropdownMenu2"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Azioni
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+            <button class="dropdown-item" type="button" (click)="selectForm(1)">Crea Todo</button>
+            <button class="dropdown-item" type="button" (click)="selectForm(2)">Aggiungi Post</button>
+            <button class="dropdown-item" type="button" (click)="selectForm(3)">Aggiungi Storia</button>
+        </div>
+    </div>
+    <!-- Card -->
+    <div *ngIf="showCorrectForm === 1" class="card">
+
+        <div id="exit-icon">
+            <a (click)="selectForm(0)"><i class="fa fa-times"></i></a>
+        </div>
+        <div class="card-body">
+            <app-todo></app-todo>
+
+        </div>
+    </div>
+</div>

@@ -19,6 +19,9 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TodoCardComponent } from './components/todo-card/todo-card.component';
+import { UserInfoComponent } from './components/home/user-info/user-info.component';
+import { CreateFormComponent } from './components/home/create-form/create-form.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,10 @@ import { TodoCardComponent } from './components/todo-card/todo-card.component';
     ListTodoComponent,
     NavbarComponent,
     FooterComponent,
-    TodoCardComponent
+    TodoCardComponent,
+    UserInfoComponent,
+    CreateFormComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
