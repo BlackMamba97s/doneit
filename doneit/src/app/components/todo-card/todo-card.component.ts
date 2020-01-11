@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Todo } from '../todo/todo.component';
 
 @Component({
   selector: 'app-todo-card',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TodoCardComponent implements OnInit {
 
-  constructor() { }
+  @Input() todo: Todo
+  private showCorrectBody = 1
+
+  constructor() {
+  }
 
   ngOnInit() {
+    console.log(this.todo)
+  }
+
+
+  handleTodoProposal(todoId) {
+    console.log(todoId)
+  }
+
+  changeBody(numBody) {
+    this.showCorrectBody = numBody
   }
 
 }

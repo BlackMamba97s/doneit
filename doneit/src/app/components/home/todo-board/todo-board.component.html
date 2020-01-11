@@ -4,7 +4,7 @@
         <div class="col-sm-8">
 
             <div *ngFor="let t of todoList">
-                <app-todo-card></app-todo-card>
+                <app-todo-card [todo]="t"></app-todo-card>
             </div>
 
         </div>
