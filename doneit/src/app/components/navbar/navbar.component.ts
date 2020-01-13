@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   private isUserLogged
   private createTodo = 0
   private home = 0
+  private sidebarAction = 1 //show sidebar
 
   constructor(private route: ActivatedRoute, private userAuth: LoginAuthenticationService) {
 
@@ -29,6 +30,9 @@ export class NavbarComponent implements OnInit {
   activeTodo(){
     this.home = 0
     this.createTodo = 1
+  }
 
+  handleSidebar(){
+    this.sidebarAction === 1? this.sidebarAction = 0 : this.sidebarAction = 1
   }
 }

@@ -10,3 +10,24 @@
     margin-top: 10px;
     margin-bottom: 20px;
 }
+
+#test{
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    top: 50px;
+    width: 16vw;
+    max-height: 100%;
+    overflow: auto;
+    z-index: 1;
+}
+
+#test::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE and Edge */
+  #test {
+    -ms-overflow-style: none;
+  }

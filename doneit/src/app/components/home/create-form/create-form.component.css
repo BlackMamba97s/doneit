@@ -1,13 +1,7 @@
-.container{
-    margin-top: 30px;
-}
-
-#exit-icon{
-    text-align: right;
-    margin-right: 15px;
-    margin-top: 15px;
-}
-
-.dropdown{
-    text-align: center;
+#container{
+    position: fixed;
+    top: 100px;
+    max-width: 25vw;
+    max-height: 100%;
+    overflow: auto;
 }

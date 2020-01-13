@@ -1,6 +1,11 @@
-<!--Navbar -->
 <nav *ngIf="userAuth.isUserLoggedIn()"
   class="mb-1 navbar navbar-expand-lg sticky-top navbar-dark light-blue darken-3 lighten-1">
+  <a class="mb-0"><span style="font-size: 1.5rem;" id="sidebar-btn" (click)="handleSidebar()">
+      <span style="color:white">
+        <i class="fa fa-bars"></i>
+      </span>
+    </span>
+  </a>
   <a class="navbar-brand" href="#">Done It</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
     aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +44,7 @@
         <li class="nav-item dropdown"></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">Pippo Franco
+            aria-haspopup="true" aria-expanded="false">Aldo Baglio
           </a>
           <div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-555">
             <a class="dropdown-item" routerLink="/list-todos">Il mio profilo</a>
@@ -49,13 +54,15 @@
         </li>
         <li class="nav-item avatar">
           <a class="nav-link p-0" href="#">
-            <img
-              src="https://www.unito.it/sites/default/files/styles/paragrafo/public/ugovunito/foto/2041101-gr-picture.jpg?itok=ie5QqutH"
-              class="rounded-circle z-depth-0" alt="avatar image" height="35">
+            <img src="https://pad.mymovies.it/filmclub/attori/24583.jpg" class="md-avatar rounded-circle"
+              alt="avatar image">
           </a>
         </li>
       </ul>
     </ul>
   </div>
 </nav>
-<!--/.Navbar -->
+
+<div *ngIf="sidebarAction === 1">
+  <app-user-info></app-user-info>
+</div>
