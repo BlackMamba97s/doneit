@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user/user.model';
+import { Category } from 'src/app/models/category/category';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-todo',
@@ -10,10 +12,14 @@ import { User } from 'src/app/models/user/user.model';
 })
 export class TodoComponent implements OnInit {
 
+
+  private categories: Category[]
   private todo: Todo = new Todo()
   private todoId: number
+  
 
-  constructor(private todoService: TodoService, private activatedRoute: ActivatedRoute, private router: Router) { }
+
+  constructor(private todoService: TodoService, private categoryService: CategoryService,private activatedRoute: ActivatedRoute, private router: Router) { }
 
 
   ngOnInit() {
@@ -21,7 +27,7 @@ export class TodoComponent implements OnInit {
     if(this.todoId){ // se todoId è undefined vuol dire che si vuole creare un TODO
       this.retrieveTodo(this.todoId)
     }
-    
+    this.getCategories()
   }
 
 
@@ -31,9 +37,11 @@ export class TodoComponent implements OnInit {
         console.log(response)
       },
       error => {
-
+        console.log(error)
       }
     )
+    console.log(this.todo)
+    
   }
 
   handleTodoUpdate(){
@@ -58,6 +66,19 @@ export class TodoComponent implements OnInit {
     )
   }
 
+  getCategories(){
+    this.categoryService.getAllCategories().subscribe(
+      response =>{
+        this.categories = response
+        console.log(response)
+      },
+      error => {
+        console.log(error)
+      }
+      
+    )
+  }
+
 }
 
 
@@ -67,7 +88,12 @@ export class Todo {
   title: string
   description: string
   publishedDate: Date
+  expirationDate: Date
+  expired: boolean
+
   user: User
+  category: Category
+
 
   constructor() { }
 

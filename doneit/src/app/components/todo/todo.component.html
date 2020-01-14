@@ -9,6 +9,18 @@
             <label>Descrizione: </label>
             <input type="text" class="form-control" name="description" [(ngModel)]='todo.description'>
         </fieldset>
+
+        
+        <fieldset class = "form-group">
+            <input type = "date" name = "Scadenza" [(ngModel)] = "todo.expirationDate">
+        </fieldset>
+        
+        <fieldset class = "form-group">
+            <select class="browser-default custom-select custom-select-lg mb-3" [(ngModel)]="todo.category" name="selectedValue">
+                <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+            </select>
+        </fieldset>
+
         <div style="text-align: right;">
             <button *ngIf="!todoId" type="submit" class="btn btn-success">Crea</button>
         </div>
@@ -29,6 +41,7 @@
             <label>Descrizione: </label>
             <input type="text" class="form-control" name="description" [(ngModel)]='todo.description'>
         </fieldset>
+
         <button *ngIf="todoId" type="submit" class="btn btn-success">Aggiorna</button>
     </form>
 </div>
