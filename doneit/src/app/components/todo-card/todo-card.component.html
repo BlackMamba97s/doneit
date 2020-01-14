@@ -1,7 +1,7 @@
 <div class="container">
     <div class="text-center">
         <div class="card-header" style="background-color: #fafafa;">
-            <ul class="nav nav-tabs card-header-tabs" bac>
+            <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item">
                     <a [ngClass]="{'nav-link': true, 'active': showCorrectBody === 1}" (click)="changeBody(3)"
                         (click)="changeBody(1)">Todo</a>
@@ -42,8 +42,11 @@
 
                 <div class="row align-items-center ">
                     <div id="info-todo" class="col-xl-4"><b>3</b> persone seguono questo todo</div>
-                    <div class="col-xl-4"><button class="btn btn-secondary btn-rounded"
-                            (click)="handleTodoProposal(todo.id)">Do It</button></div>
+                    <div class="col-xl-4">
+                        <button class="btn btn-secondary btn-rounded"
+                            (click)="handleTodoProposal()">Do It
+                        </button>
+                        </div>
                     <div id="icon-div1" class="col-xl-2">
                         <span id="follow-todo" style="font-size: 2rem;">
                             <span style="color: #ffcdd2">

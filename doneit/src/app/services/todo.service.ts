@@ -35,4 +35,8 @@ export class TodoService {
   getAllTodo(){
     return this.httpClient.get<any>(`${API_URL}/active-todo-list`)
   }
+
+  sendProposal(todo){
+    return this.httpClient.post<any>(`${API_URL}/create-proposal`, todo)
+  }
 }
