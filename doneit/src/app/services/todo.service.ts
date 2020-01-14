@@ -33,6 +33,6 @@ export class TodoService {
   }
 
   getAllTodo(){
-    return this.httpClient.get<any>(`${API_URL}/all-todo-list`)
+    return this.httpClient.get<any>(`${API_URL}/active-todo-list`)
   }
 }

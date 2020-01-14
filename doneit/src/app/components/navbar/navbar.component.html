@@ -1,5 +1,4 @@
-<nav *ngIf="userAuth.isUserLoggedIn()"
-  class="mb-1 navbar navbar-expand-lg sticky-top navbar-dark light-blue darken-3">
+<nav *ngIf="userAuth.isUserLoggedIn()" class="mb-1 navbar navbar-expand-lg sticky-top navbar-dark light-blue darken-3">
 
   <a class="navbar-brand" href="#">Done It</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
@@ -36,16 +35,8 @@
         </li>
       </ul>
       <ul class="navbar-nav mr-auto nav-flex-icons">
-        <li class="nav-item dropdown"></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-555" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">Aldo Baglio
-          </a>
-          <div class="dropdown-menu dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-555">
-            <a class="dropdown-item" routerLink="/list-todos">Il mio profilo</a>
-            <a class="dropdown-item" routerLink="/list-todos">I miei Todo</a>
-            <a class="dropdown-item" routerLink="/logout">Logout</a>
-          </div>
+        <li class="nav-item ">
+          <a class="nav-link waves-effect waves-light">Aldo Baglio</a>
         </li>
         <li class="nav-item avatar">
           <a class="nav-link p-0" href="#">
@@ -58,6 +49,6 @@
   </div>
 </nav>
 
-<div *ngIf="sidebarAction === 1">
+<div *ngIf="userAuth.isUserLoggedIn()">
   <app-user-info></app-user-info>
 </div>
