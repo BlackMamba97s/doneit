@@ -12,17 +12,17 @@ import { TodoCardComponent } from './components/todo-card/todo-card.component';
 
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {path: 'home', component: HomeComponent, canActivate: [RouteGuardService]},
-  {path: 'update-todo/:id', component: TodoComponent, canActivate: [RouteGuardService]},
-  {path: 'create-todo', component: TodoComponent, canActivate: [RouteGuardService]},
-  {path: 'list-todos', component: ListTodoComponent, canActivate: [RouteGuardService]},
-  {path: 'todo-card', component: TodoCardComponent},
-  {path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService]},
+  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'update-todo/:id', component: TodoComponent, canActivate: [RouteGuardService] },
+  { path: 'create-todo', component: TodoComponent, canActivate: [RouteGuardService] },
+  { path: 'list-todos', component: ListTodoComponent, canActivate: [RouteGuardService] },
+  { path: 'todo-card', component: TodoCardComponent },
+  { path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService] },
   // {path: 'register', component: RegisterComponent, canActivate: [RouteGuardService]},
-  {path: '**', component: ErrorComponent}
+  { path: '**', component: ErrorComponent }
 ];
 
 @NgModule({

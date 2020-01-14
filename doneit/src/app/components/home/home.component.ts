@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
 
+  private display = 0;
 
   constructor(private httpClient: HttpClient) { }
 
@@ -23,6 +24,15 @@ export class HomeComponent implements OnInit {
         console.log(error)
       }
     )
+  }
+
+  handleBar(){
+    if(this.display === 0){
+      this.display = 1;
+    }
+    else{
+      this.display = 0;
+    }
   }
 
 }

@@ -1,11 +1,6 @@
 <nav *ngIf="userAuth.isUserLoggedIn()"
-  class="mb-1 navbar navbar-expand-lg sticky-top navbar-dark light-blue darken-3 lighten-1">
-  <a class="mb-0"><span style="font-size: 1.5rem;" id="sidebar-btn" (click)="handleSidebar()">
-      <span style="color:white">
-        <i class="fa fa-bars"></i>
-      </span>
-    </span>
-  </a>
+  class="mb-1 navbar navbar-expand-lg sticky-top navbar-dark light-blue darken-3">
+
   <a class="navbar-brand" href="#">Done It</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-555"
     aria-controls="navbarSupportedContent-555" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,6 +58,6 @@
   </div>
 </nav>
 
-<div *ngIf="sidebarAction === 1">
+<!-- <div *ngIf="sidebarAction === 1">
   <app-user-info></app-user-info>
-</div>
+</div> -->

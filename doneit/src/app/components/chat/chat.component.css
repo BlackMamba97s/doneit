@@ -1,31 +1,7 @@
+
 .container{
-    width: 15vw;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    max-height: 100%;
-    top: 100px;
-    max-height: 100%;
-    overflow: auto;
-    z-index: 1;
-    margin: 0 !important;
-    padding: 0px;
+    margin-top: 50px;
 }
-
-.btn{
-    color: black!important;
-    text-transform: none;
-    margin: 0 !important;
-    position: fixed;
-    right: 0;
-    width: 14.9vw;
-    top:50px;
-    z-index: 2;
-    height: 50px;
-
-}
-
-
 
 .md-avatar {
     vertical-align: middle;

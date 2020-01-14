@@ -1,5 +1,4 @@
 <div *ngIf="!todoId" class="container">
-    <h4>Crea Todo</h4>
     <form (ngSubmit)='handleTodoCreation()'>
         <fieldset class="form-group">
             <label>Titolo: </label>
@@ -11,7 +10,7 @@
             <input type="text" class="form-control" name="description" [(ngModel)]='todo.description'>
         </fieldset>
         <div style="text-align: right;">
-            <button *ngIf="!todoId" type="submit" class="btn btn-primary">Conferma</button>
+            <button *ngIf="!todoId" type="submit" class="btn btn-success">Crea</button>
         </div>
     </form>
 </div>

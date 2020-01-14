@@ -1,5 +1,6 @@
-.container{
-    margin-top: 30px;
+
+.list-group-flush{
+  margin-top: 15px;
 }
 
 .fa{
@@ -8,19 +9,22 @@
 
 .img-thumbnail{
     margin-top: 10px;
-    margin-bottom: 20px;
 }
 
+
+
 #test{
-    background-color: white;
+  border-radius: 0;
+  background-color: #fafafa;
     position: fixed;
     bottom: 0;
     left: 0;
-    top: 50px;
-    width: 16vw;
+    top: 40px;
+    width: 13vw;
     max-height: 100%;
     overflow: auto;
     z-index: 1;
+    padding: 0px;
 }
 
 #test::-webkit-scrollbar {
@@ -31,3 +35,31 @@
   #test {
     -ms-overflow-style: none;
   }
+
+  @media screen and (max-width: 768px) {
+    .container {
+      display: none;
+    }
+  }
+
+
+
+  .list-group-item{
+    background-color: #fafafa;
+    font-size: smaller;
+  }
+
+  #username{
+    text-align: center;
+    margin-top: 50px;
+
+  }
+
+h4{
+  margin-top: 30px;
+}
+
+.active{
+  color: white !important;
+  background-color: #0277bd !important;
+}

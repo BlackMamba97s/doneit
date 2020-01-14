@@ -22,6 +22,9 @@ import { TodoCardComponent } from './components/todo-card/todo-card.component';
 import { UserInfoComponent } from './components/home/user-info/user-info.component';
 import { CreateFormComponent } from './components/home/create-form/create-form.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { GenericBoardComponent } from './components/home/generic-board/generic-board.component';
+import { StoryViewerComponent } from './components/home/story-viewer/story-viewer.component';
+import { CarouselComponent } from './components/home/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { ChatComponent } from './components/chat/chat.component';
     TodoCardComponent,
     UserInfoComponent,
     CreateFormComponent,
-    ChatComponent
+    ChatComponent,
+    GenericBoardComponent,
+    StoryViewerComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
