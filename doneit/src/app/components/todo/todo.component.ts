@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user/user.model';
 import { Category } from 'src/app/models/category/category';
 import { CategoryService } from 'src/app/services/category.service';
+import { Proposal } from 'src/app/models/proposal/proposal';
 
 @Component({
   selector: 'app-todo',
@@ -93,7 +94,7 @@ export class Todo {
 
   user: User
   category: Category
-
+  proposals: Proposal[]
 
   constructor() { }
 
