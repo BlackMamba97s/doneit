@@ -1,23 +1,25 @@
+<div class="alert alert-warning" *ngIf='errorRegister' [innerHTML]="errorRegister"></div>
+
+
+
 <div class="card">
     <div class="card-body">
         <div class="card-text">
             <div class="container">
-                <!-- Material input -->
-                <!-- Default form register -->
-                <form (ngSubmit)="handleRegister()" #loginForm="ngForm" class="text-center">
 
+                <form (ngSubmit)="handleRegister()" #loginForm="ngForm" class="text-center">
                     <p class="h6">Non hai un account? Registrati</p>
 
                     <div class="form-row mb-4">
                         <div class="col">
                             <!-- First name -->
-                            <input type="text" id="defaultRegisterFormFirstName" class="form-control"
-                                placeholder="Nome">
+                            <input type="text" class="form-control" placeholder="Nome" [(ngModel)]="user.name"
+                                name="name">
                         </div>
                         <div class="col">
                             <!-- Last name -->
-                            <input type="text" id="defaultRegisterFormLastName" class="form-control"
-                                placeholder="Cognome">
+                            <input type="text" class="form-control" placeholder="Cognome" [(ngModel)]=user.surname
+                                name="surname">
                         </div>
                     </div>
 
@@ -25,45 +27,38 @@
                         placeholder="Username">
 
                     <!-- E-mail -->
-                    <input type="email" id="defaultRegisterFormEmail" class="form-control mb-4" placeholder="E-mail">
+                    <input type="email" class="form-control mb-4" placeholder="E-mail" [(ngModel)]=user.email
+                        name="email">
 
                     <!-- Password -->
                     <input type="password" name="password" [(ngModel)]="user.password" id="defaultRegisterFormPassword"
                         class="form-control" placeholder="Password"
                         aria-describedby="defaultRegisterFormPasswordHelpBlock">
-                    <small id="defaultRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
-                        Almeno 8 caratteri e un numero
+                    <small class="form-text text-muted mb-4">
+                        Almeno 8 caratteri, di cui almeno una maiuscola, una minuscola ed un numero
                     </small>
 
-                    <!-- Phone number -->
-                    <input type="text" id="defaultRegisterPhonePassword" class="form-control" placeholder="Phone number"
-                        aria-describedby="defaultRegisterFormPhoneHelpBlock">
-                    <small id="defaultRegisterFormPhoneHelpBlock" class="form-text text-muted mb-4">
-                        Opzionale
+                    <input type="password" name="password" [(ngModel)]="confirmPassword" class="form-control"
+                        placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock"
+                        name="confirmPassword">
+                    <small id="defaultRegisterFormPasswordHelpBlock2" class="form-text text-muted mb-4">
+                        Conferma Password
                     </small>
 
                     <!-- Sign up button -->
                     <button type="submit" class="btn btn-success my-4 btn-block">Registrati</button>
-
-                    <!-- Social register -->
-
-                    <hr>
-
-                    <!-- Terms of service -->
-                    <p>By clicking
-                        <em>Sign up</em> you agree to our
-                        <a href="" target="_blank">terms of service</a>
-
                 </form>
                 <!-- Default form register -->
             </div>
 
         </div>
+    </div>
+</div>
 
 
 
 
-        <!-- <form (ngSubmit)="handleRegister()" #loginForm="ngForm">
+<!-- <form (ngSubmit)="handleRegister()" #loginForm="ngForm">
                 <div class="alert alert-warning" *ngIf='errorRegister'>{{errorRegister}}</div>
                 <fieldset class="form-group">
                     <label>Username: </label>
