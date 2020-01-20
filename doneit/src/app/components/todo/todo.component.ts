@@ -17,15 +17,15 @@ export class TodoComponent implements OnInit {
   private categories: Category[]
   private todo: Todo = new Todo()
   private todoId: number
-  
 
 
-  constructor(private todoService: TodoService, private categoryService: CategoryService,private activatedRoute: ActivatedRoute, private router: Router) { }
+
+  constructor(private todoService: TodoService, private categoryService: CategoryService, private activatedRoute: ActivatedRoute, private router: Router) { }
 
 
   ngOnInit() {
     this.todoId = this.activatedRoute.snapshot.params['id']
-    if(this.todoId){ // se todoId è undefined vuol dire che si vuole creare un TODO
+    if (this.todoId) { // se todoId è undefined vuol dire che si vuole creare un TODO
       this.retrieveTodo(this.todoId)
     }
     this.getCategories()
@@ -35,17 +35,15 @@ export class TodoComponent implements OnInit {
   handleTodoCreation() {
     this.todoService.createTodo(this.todo).subscribe(
       response => {
-        console.log(response)
       },
       error => {
         console.log(error)
       }
     )
-    console.log(this.todo)
-    
+
   }
 
-  handleTodoUpdate(){
+  handleTodoUpdate() {
     this.todoService.updateTodo(this.todo).subscribe(
       response => {
         this.router.navigate(['home'])
@@ -56,7 +54,7 @@ export class TodoComponent implements OnInit {
     )
   }
 
-  retrieveTodo(todoId){
+  retrieveTodo(todoId) {
     this.todoService.getTodo(todoId).subscribe(
       response => {
         this.todo = response
@@ -67,16 +65,15 @@ export class TodoComponent implements OnInit {
     )
   }
 
-  getCategories(){
+  getCategories() {
     this.categoryService.getAllCategories().subscribe(
-      response =>{
+      response => {
         this.categories = response
-        console.log(response)
       },
       error => {
         console.log(error)
       }
-      
+
     )
   }
 

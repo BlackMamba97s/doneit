@@ -1,4 +1,8 @@
-<div class="alert alert-warning" *ngIf='errorRegister' [innerHTML]="errorRegister"></div>
+<div class="alert alert-warning text-center" *ngIf='errorRegister' [innerHTML]="errorRegister"></div>
+
+
+<div class="alert alert-success text-center" *ngIf='messageCode === 4'
+>Registrazione avvenuta con successo</div>
 
 
 
@@ -26,6 +30,11 @@
                     <input type="text" class="form-control mb-4" name="username" [(ngModel)]="user.username"
                         placeholder="Username">
 
+                    <small class="form-text text-muted mb-4">
+                        Solo caratteri alfanumerici e/o underscore.
+                    </small>
+
+
                     <!-- E-mail -->
                     <input type="email" class="form-control mb-4" placeholder="E-mail" [(ngModel)]=user.email
                         name="email">
@@ -35,7 +44,8 @@
                         class="form-control" placeholder="Password"
                         aria-describedby="defaultRegisterFormPasswordHelpBlock">
                     <small class="form-text text-muted mb-4">
-                        Almeno 8 caratteri, di cui almeno una maiuscola, una minuscola ed un numero
+                        Almeno 8 caratteri, di cui almeno una maiuscola, una minuscola, un numero e un carattere
+                        speciale.
                     </small>
 
                     <input type="password" name="password" [(ngModel)]="confirmPassword" class="form-control"

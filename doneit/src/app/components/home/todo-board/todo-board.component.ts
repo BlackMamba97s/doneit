@@ -21,7 +21,6 @@ export class TodoBoardComponent implements OnInit {
     this.todoService.getAllTodo().subscribe(
       response => {
         this.todoList = response;
-        console.log(response)
       },
       error => {
         console.log(error)

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { RegisterService } from 'src/app/services/register.service';
+import { LoginAuthenticationService } from 'src/app/services/login-authentication.service';
 
 @Component({
   selector: 'app-home',
@@ -10,29 +12,21 @@ export class HomeComponent implements OnInit {
 
   private display = 0;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private loginAuth: LoginAuthenticationService) { }
 
   ngOnInit() {
+    this.verifyIfFirstLogin()
   }
 
-  handleHello() {
-    this.httpClient.get("http://localhost:8080/hello").subscribe(
+  verifyIfFirstLogin(){
+    this.loginAuth.checkIfFirstLoginRequest().subscribe(
       result => {
-        console.log(result)
+        console.log(result);
       },
       error => {
-        console.log(error)
+
       }
     )
-  }
-
-  handleBar(){
-    if(this.display === 0){
-      this.display = 1;
-    }
-    else{
-      this.display = 0;
-    }
   }
 
 }
