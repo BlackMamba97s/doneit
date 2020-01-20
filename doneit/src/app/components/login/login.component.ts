@@ -38,9 +38,12 @@ export class LoginComponent implements OnInit {
     );
   }
 
-  createUserSession() {
+  createUserSession(firstLogin) {
     sessionStorage.setItem("username", this.user.getUsername())
     sessionStorage.setItem("token", `Bearer ${this.responseMessage.token}`)
+    if(firstLogin){
+      sessionStorage.setItem("firstLogin", "true");
+    }
   }
 
   handleResponse(data) {
@@ -54,9 +57,15 @@ export class LoginComponent implements OnInit {
       case MessageCode.SUCCESSFUL_LOGIN:
         console.log("Login effettuato con successo")
         console.log(this.responseMessage)
-        this.createUserSession()
+        this.createUserSession(false)
         this.router.navigate(['home'])
         break
+      case MessageCode.FIRST_LOGIN:
+        console.log("Primo Login")
+        console.log(this.responseMessage)
+        this.createUserSession(true)
+        this.router.navigate(['complete-register'])
+        break;
     }
   }
 }

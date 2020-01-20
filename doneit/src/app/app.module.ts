@@ -26,6 +26,7 @@ import { GenericBoardComponent } from './components/home/generic-board/generic-b
 import { StoryViewerComponent } from './components/home/story-viewer/story-viewer.component';
 import { CarouselComponent } from './components/home/carousel/carousel.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CompleteRegisterComponent } from './components/complete-register/complete-register.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     GenericBoardComponent,
     StoryViewerComponent,
     CarouselComponent,
-    ProfileComponent
+    ProfileComponent,
+    CompleteRegisterComponent
   ],
   imports: [
     BrowserModule,

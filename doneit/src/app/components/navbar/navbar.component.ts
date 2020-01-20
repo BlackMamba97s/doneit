@@ -9,30 +9,16 @@ import { LoginAuthenticationService } from 'src/app/services/login-authenticatio
 })
 export class NavbarComponent implements OnInit {
 
-  private isUserLogged
-  private createTodo = 0
-  private home = 0
-  private sidebarAction = 1 //show sidebar
+  private username: string
 
   constructor(private route: ActivatedRoute, private userAuth: LoginAuthenticationService) {
 
   }
 
   ngOnInit() {
-
+    this.username = sessionStorage.getItem("username")
   }
 
-  activeHome(){
-    this.createTodo = 0
-    this.home = 1
-  }
 
-  activeTodo(){
-    this.home = 0
-    this.createTodo = 1
-  }
 
-  handleSidebar(){
-    this.sidebarAction === 1? this.sidebarAction = 0 : this.sidebarAction = 1
-  }
 }

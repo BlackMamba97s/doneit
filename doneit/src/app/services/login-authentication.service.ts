@@ -20,8 +20,8 @@ export class LoginAuthenticationService {
     return sessionStorage.getItem("username")
   }
 
-  checkIfFirstLoginRequest(){
-    return this.httpClient.get<any>(`${API_URL}/verify-first-login`)
+  isFirstLogin(){
+    return sessionStorage.getItem("firstLogin");
   }
 
 }

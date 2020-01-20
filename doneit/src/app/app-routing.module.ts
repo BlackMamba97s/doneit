@@ -10,6 +10,7 @@ import { LogoutComponent } from './components/home/logout/logout.component';
 import { ListTodoComponent } from './components/list-todo/list-todo.component';
 import { TodoCardComponent } from './components/todo-card/todo-card.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { CompleteRegisterComponent } from './components/complete-register/complete-register.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'todo-card', component: TodoCardComponent },
   { path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService] },
   { path: 'show-profile/:username', component: ProfileComponent, canActivate: [RouteGuardService] },
+  { path: 'complete-register', component: CompleteRegisterComponent, canActivate: [RouteGuardService] },
   // {path: 'register', component: RegisterComponent, canActivate: [RouteGuardService]},
   { path: '**', component: ErrorComponent }
 ];

@@ -12,21 +12,10 @@ export class HomeComponent implements OnInit {
 
   private display = 0;
 
-  constructor(private httpClient: HttpClient, private loginAuth: LoginAuthenticationService) { }
+  constructor(private httpClient: HttpClient) { }
 
   ngOnInit() {
-    this.verifyIfFirstLogin()
-  }
 
-  verifyIfFirstLogin(){
-    this.loginAuth.checkIfFirstLoginRequest().subscribe(
-      result => {
-        console.log(result);
-      },
-      error => {
-
-      }
-    )
   }
 
 }

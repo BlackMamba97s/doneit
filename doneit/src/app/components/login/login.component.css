@@ -14,6 +14,21 @@ h1{
  }
 
 
+ .background{
+    position: fixed;
+    top: 60%;
+    left: 0;
+    background-color: #0277bd;
+    width: 100%;
+    z-index: -1;
+    height: 100%;
+
+}
+
+#test{
+    margin-top: 48px;
+}
+
 
 /* // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) { }
