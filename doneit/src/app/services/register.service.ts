@@ -12,8 +12,12 @@ export class RegisterService {
   constructor(private httpClient: HttpClient) { }
 
 
-  executeUserRegistration(user: User){
+  executeUserRegistration(user: User) {
     return this.httpClient.post<ResponseMessage>("http://localhost:8080/register-user", user);
+  }
+
+  completeUserRegister(personalCard) {
+    return this.httpClient.post<ResponseMessage>("http://localhost:8080/complete-register", personalCard);
   }
 
 }

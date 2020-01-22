@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import {FormsModule} from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -27,6 +27,7 @@ import { StoryViewerComponent } from './components/home/story-viewer/story-viewe
 import { CarouselComponent } from './components/home/carousel/carousel.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CompleteRegisterComponent } from './components/complete-register/complete-register.component';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 @NgModule({
   declarations: [
@@ -59,8 +60,9 @@ import { CompleteRegisterComponent } from './components/complete-register/comple
     BrowserAnimationsModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }, [NgxImageCompressService]
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
