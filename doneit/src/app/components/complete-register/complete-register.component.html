@@ -2,12 +2,11 @@
     <div class="col-lg-7 align-self-center">
         <div class="card">
 
-
             <div class="background">
             </div>
 
             <div class="alert alert-success text-center" role="alert">
-                <h4 class="alert-heading">Grazie Francesco!</h4>
+                <h4 class="alert-heading">Grazie {{personalCard.user.name}}!</h4>
                 <p>Ti sei appena iscritto a DoneIt! Hai guadagnato <b>180 CFU</b>.</p>
                 <hr>
                 <p class="mb-0">Se ti va, puoi aggiungere qualcosa su di te.</p>
@@ -30,8 +29,8 @@
 
                             <input type="email" id="defaultContactFormEmail" class="form-control mb-4"
                                 placeholder="Facoltà" name="faculty" [(ngModel)]="personalCard.faculty">
-                            <input type="number" id="defaultContactFormEmail" class="form-control mb-4"
-                                placeholder="Telefono" name="telephone" [(ngModel)]="personalCard.telephone">
+                            <input type="number" class="form-control mb-4" placeholder="Telefono" name="telephone"
+                                [(ngModel)]="personalCard.telephone">
 
 
                             <div class="form-group">
@@ -45,7 +44,8 @@
 
 
                             <div class="row justify-content-center">
-                                <img id="profile_image" [src]="url" class="rounded-circle" height="250px" width="250px">
+                                <img *ngIf="url" id="profile_image" [src]="url" class="rounded-circle" height="250px"
+                                    width="250px">
                             </div>
                             <form>
 

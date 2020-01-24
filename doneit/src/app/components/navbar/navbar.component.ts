@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, ActivatedRoute } from '@angular/router';
 import { LoginAuthenticationService } from 'src/app/services/login-authentication.service';
+import { PersonalCard } from 'src/app/models/personal-card/personal-card';
+import { UserService } from 'src/app/services/user.service';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Url } from 'url';
 
 @Component({
   selector: 'app-navbar',
@@ -10,18 +14,39 @@ import { LoginAuthenticationService } from 'src/app/services/login-authenticatio
 export class NavbarComponent implements OnInit {
 
   private username: string
+  private personalCard = new PersonalCard()
+  private imagePath: Url
 
-  constructor(private route: ActivatedRoute, private userAuth: LoginAuthenticationService) {
+
+  constructor(private route: ActivatedRoute,
+    private userAuth: LoginAuthenticationService,
+    private userService: UserService) {
+
 
   }
 
   ngOnInit() {
+    this.userService.personalCardSubject.subscribe(
+      personalCard => {
+        this.updateUserInfoNav(personalCard)
+      }
+
+    )
   }
+
 
   isUserLoggedIn() {
-    this.username = sessionStorage.getItem("username");
-    return this.userAuth.isUserLoggedIn();
+    this.username = sessionStorage.getItem("username")
+    return this.userAuth.isUserLoggedIn()
   }
 
+  updateUserInfoNav(personalCard) {
+    this.personalCard = personalCard;
+    if (this.personalCard.imageUrl) {
+      this.imagePath = this.personalCard.imageUrl
+    }
+  }
 
 }
+
+

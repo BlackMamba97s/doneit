@@ -1,37 +1,22 @@
 <div class="container-fluid">
 
     <div id="user-card" class="row justify-content-center">
-        <!-- <div id="user-card" class="col-xl-3 no-gutters">
-            <div class="text-center">
-                <img src="https://i.pinimg.com/originals/6e/5f/0d/6e5f0db3986c094e3b4c22d12b01e764.jpg" alt="..."
-                    class="img">
-                <h2 id="username">@Aldy92<a><i class="fa fa-user-plus"></i></a></h2>
-                <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="fa fa-id-card"></i>Aldo Baglio</li>
-                    <li class="list-group-item"><i class="fa fa-envelope"></i>aldo@gmail.com</li>
-                    <li class="list-group-item"><i class="fa fa-phone"></i>3635373536</li>
-                    <li class="list-group-item"><i class="fa fa-building"></i>Università degli studi di Torino</li>
-                    <li class="list-group-item"><i class="fa fa-graduation-cap"></i>Informatica</li>
-                    <li class="list-group-item"><i class="fa fa-credit-card"></i>180 CFU</li>
-                </ul>
-            </div>
-        </div> -->
         <div class="col-xl-9">
             <div class="card mb-3">
                 <div class="row no-gutters">
                     <div class="col-lg-4 text-center align-self-center">
-                        <img src="https://i.pinimg.com/originals/6e/5f/0d/6e5f0db3986c094e3b4c22d12b01e764.jpg"
-                            class="rounded-circle" height="200px" width="200px">
+                        <img *ngIf="personalCard.imageUrl" [src]="personalCard.imageUrl" class="rounded-circle"
+                            height="200px" width="200px">
                     </div>
                     <div class="col-lg-6 no-gutters align-self-center">
                         <div class="card-body text-left">
-                            <h2 class="card-title text-center">@Aldy97
-                                <button class="btn btn-success btn-sm">Segui</button>
-                                <button class="btn btn-primary btn-sm">Chat</button>
+                            <h2 class="card-title text-center">@{{personalCard.user.username}}
                             </h2>
-                            <p class="card-text text-center">Nel mezzo del cammino di nostra vita mi ritrovai in una
-                                selva oscura
-                            </p>
+                            <h6 class="card-title text-center">{{personalCard.university}}
+                            </h6>
+                            <h6 class="card-title text-center">{{personalCard.faculty}}
+                            </h6>
+
 
                             <div class="row justify-content-center">
                                 <div class="col-lg-3">
@@ -43,7 +28,6 @@
                                 <div class="col-lg-3">
                                     <h4 class="text-center">47 T</h4>
                                 </div>
-
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { RegisterService } from 'src/app/services/register.service';
 import { LoginAuthenticationService } from 'src/app/services/login-authentication.service';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/app/models/user/user.model';
 
 @Component({
   selector: 'app-home',
@@ -10,12 +12,12 @@ import { LoginAuthenticationService } from 'src/app/services/login-authenticatio
 })
 export class HomeComponent implements OnInit {
 
-  private display = 0;
+  private user = new User('', '')
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-
+    this.userService.getMyPersonalCard().subscribe()
   }
 
 }

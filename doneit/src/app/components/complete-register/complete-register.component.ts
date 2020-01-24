@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { PersonalCard } from 'src/app/models/personal-card/personal-card';
 import { NgxImageCompressService, DOC_ORIENTATION } from 'ngx-image-compress';
 import { RegisterService } from 'src/app/services/register.service';
+import { ResponseMessage } from 'src/app/models/response-message/response-message';
+import { MessageCode } from 'src/app/models/response-message/message-code';
+import { RouterLink, ActivatedRoute, Router } from '@angular/router';
+import { User } from 'src/app/models/user/user.model';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-complete-register',
@@ -10,15 +15,37 @@ import { RegisterService } from 'src/app/services/register.service';
 })
 export class CompleteRegisterComponent implements OnInit {
 
-  private url = "https://www.publicdomainpictures.net/pictures/40000/nahled/question-mark.jpg";
-  private file: File
+  private url;
   private personalCard = new PersonalCard()
   imgResultBeforeCompress: string;
   imgResultAfterCompress: string;
+  private responseMessage: ResponseMessage
 
-  constructor(private imageCompress: NgxImageCompressService, private registerService: RegisterService) { }
+  constructor(private imageCompress: NgxImageCompressService,
+    private registerService: RegisterService,
+    private router: Router,
+    private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.personalCardSubject.subscribe(
+      personalCard => {
+        this.personalCard = personalCard
+        this.showUserImage(personalCard)
+      })
+    this.userService.getMyPersonalCard().subscribe(
+      result => {
+
+      },
+      error => {
+
+      }
+    )
+  }
+
+  showUserImage(personalCard) {
+    if (personalCard.imageUrl) {
+      this.url = personalCard.imageUrl
+    }
   }
 
   public compressFile(image) {
@@ -38,7 +65,7 @@ export class CompleteRegisterComponent implements OnInit {
 
   public addFile(event: any) {
     if (event.target.files && event.target.files[0]) {
-      this.file = event.target.files[0]
+      let file = event.target.files[0]
       var reader = new FileReader();
       reader.onload = (event: any) => {
         this.url = event.target.result;
@@ -83,12 +110,23 @@ export class CompleteRegisterComponent implements OnInit {
   completeRegister() {
     this.registerService.completeUserRegister(this.personalCard).subscribe(
       result => {
-        console.log("OK")
+        this.handleResponse(result);
       },
       error => {
         console.log("NO OK")
       }
     )
+  }
+
+  handleResponse(result) {
+    this.responseMessage = result;
+    if (this.responseMessage.messageCode === MessageCode.SUCCESSFUL_REGISTER) {
+      sessionStorage.removeItem("firstLogin")
+      this.router.navigate(['home'])
+    }
+    else {
+      console.log("qualcosa è andato storto");
+    }
   }
 
 }

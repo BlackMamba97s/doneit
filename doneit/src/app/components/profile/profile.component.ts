@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonalCard } from 'src/app/models/personal-card/personal-card';
+import { UserService } from 'src/app/services/user.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+
+  private personalCard = new PersonalCard()
+
+
+  constructor(private userService: UserService,
+    private _sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    this.userService.getMyPersonalCard().subscribe(
+      result => {
+        this.personalCard = result;
+        console.log(this.personalCard)
+      }
+    )
   }
+
 
 }
