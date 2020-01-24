@@ -11,6 +11,8 @@ import { ListTodoComponent } from './components/list-todo/list-todo.component';
 import { TodoCardComponent } from './components/todo-card/todo-card.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CompleteRegisterComponent } from './components/complete-register/complete-register.component';
+import { MyTodoBoardComponent } from './components/my-todo-board/my-todo-board.component';
+
 
 
 const routes: Routes = [
@@ -25,6 +27,7 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService] },
   { path: 'show-profile/:username', component: ProfileComponent, canActivate: [RouteGuardService] },
   { path: 'complete-register', component: CompleteRegisterComponent, canActivate: [RouteGuardService] },
+  { path: "my-todo-board", component: MyTodoBoardComponent, canActivate: [RouteGuardService]},
   // {path: 'register', component: RegisterComponent, canActivate: [RouteGuardService]},
   { path: '**', component: ErrorComponent }
 ];

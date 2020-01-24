@@ -19,7 +19,7 @@ export class ListTodoComponent implements OnInit {
   }
 
   showMyTodo(){
-    this.todoService.getTodoList().subscribe(
+    this.todoService.getMyTodoList("published").subscribe(
       response =>{
           this.todo = response
           console.log(response)

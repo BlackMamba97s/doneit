@@ -12,8 +12,8 @@ export class TodoCardComponent implements OnInit {
 
   @Input() todo: Todo
   private showCorrectBody = 1
-  private diocane = false
-
+  
+  
   constructor(private todoService: TodoService) {
   }
 

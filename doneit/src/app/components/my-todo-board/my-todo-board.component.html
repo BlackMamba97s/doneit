@@ -1,0 +1,39 @@
+<div class="container">
+  <br>
+    <div class="row">
+      <div class = "col-3"></div>
+        <div class = "col-2"><a (click) = "getMyTodoList('published')">PUBLISHED</a></div>
+        <div class = "col-2"><a (click) = "getMyTodoList('accepted')">ACCEPTED</a></div>
+        <div class = "col-2"><a (click) = "getMyTodoList('completed')">TERMINATED</a></div>
+        <div class = "col-3"></div>
+      <br><br>
+    <div class="col-sm-12 no-gutters" style="background-color: white;">
+            <div *ngFor="let t of todoList">
+                <app-my-todo-card (messageEvent)="receiveMessage($event)" [todo]="t"></app-my-todo-card>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="currentTodo" id="myModal" class="modal">
+  <div class="modal-content">
+    <span (click)= "closeModal()" class="close">×</span>
+    <span id ="modal-title">Utenti proposti</span>
+    <div class = "modal-list">
+      <div class="row" *ngFor="let proposal of currentTodo.proposals">
+        <div class ="col-4 modal-user">{{proposal.user.username}}</div>
+          
+          <div class ="col-4" *ngIf="proposal.state == 'in progress'"><button  (click) = "acceptProposal(proposal)" class ="btn btn-success">accetta</button></div> 
+          <div class ="col-4" *ngIf="proposal.state == 'in progress'"><button  (click)= "refuseProposal(proposal)" class ="btn btn-danger">rifiuta</button></div>
+        
+        <div class ="col-8" *ngIf="proposal.state == 'refused'"><b >Hai rifiutato questo contatto</b></div> 
+        <div class = "col-8" *ngIf="proposal.state == 'accepted'"><b >Questa persona sta portando a termine il tuo todo</b></div> 
+        
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

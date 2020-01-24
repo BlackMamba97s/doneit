@@ -28,6 +28,9 @@ import { CarouselComponent } from './components/home/carousel/carousel.component
 import { ProfileComponent } from './components/profile/profile.component';
 import { CompleteRegisterComponent } from './components/complete-register/complete-register.component';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { MyTodoBoardComponent } from './components/my-todo-board/my-todo-board.component';
+import { MyTodoCardComponent } from './components/my-todo-card/my-todo-card.component';
+
 
 @NgModule({
   declarations: [
@@ -50,14 +53,16 @@ import { NgxImageCompressService } from 'ngx-image-compress';
     StoryViewerComponent,
     CarouselComponent,
     ProfileComponent,
-    CompleteRegisterComponent
+    CompleteRegisterComponent,
+    MyTodoBoardComponent,
+    MyTodoCardComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }, [NgxImageCompressService]

@@ -16,8 +16,8 @@ export class TodoService {
     return this.httpClient.post(`${API_URL}/create-todo`, todo)
   }
 
-  getTodoList(){
-    return this.httpClient.get<Todo[]>(`${API_URL}/my-todo-list`)
+  getMyTodoList(state){
+    return this.httpClient.get<Todo[]>(`${API_URL}/my-todo-list/`+state)
   }
 
   deleteTodo(todoId){
@@ -38,5 +38,13 @@ export class TodoService {
 
   sendProposal(todo){
     return this.httpClient.post<any>(`${API_URL}/create-proposal`, todo)
+  }
+
+  acceptProposal(todo,proposalId){
+    return this.httpClient.post<any>(`${API_URL}/accept-proposal/`+proposalId,todo)
+  }
+
+  refuseProposal(proposalId){
+    return this.httpClient.put<any>(`${API_URL}/refuse-proposal/` + proposalId,null)
   }
 }
