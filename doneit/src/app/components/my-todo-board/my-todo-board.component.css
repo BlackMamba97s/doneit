@@ -61,3 +61,23 @@
     cursor: pointer;
   }
  
+
+  @media screen and (min-width: 992px){
+    .container-fluid{
+      margin-left: 13vw;
+      margin-right: 0px !important;
+      padding: 0px !important;
+      width: 87vw;
+    }
+  }
+
+  @media screen and (max-width: 992px){
+    .container-fluid{
+      margin: 0px;
+    }
+  }
+
+  .container-fluid{
+    margin-top: 25px;
+  }
+  
