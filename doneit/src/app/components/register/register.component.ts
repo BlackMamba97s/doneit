@@ -60,12 +60,12 @@ export class RegisterComponent implements OnInit {
   }
 
   validate() {
-    if(this.messageCode === MessageCode.SUCCESSFUL_REGISTER){
+    if (this.messageCode === MessageCode.SUCCESSFUL_REGISTER) {
       this.messageCode = 0
     }
     return this.validateField(this.user.getName(), "Nome non valido", /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/g)
       && this.validateField(this.user.getSurname(), "Cognome non valido", /^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/g)
-      && this.validateField(this.user.getUsername(), "Username non valido", /^[a-zA-Z0-9_]{5,}[a-zA-Z]+[0-9]*$/)
+      && this.validateField(this.user.getUsername(), "Username non valido", /^[a-z0-9_-]{3,}$/igm)
       && this.validateField(this.user.getEmail(), "Email non valida", /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
       && this.validateField(this.user.getPassword(), "Password non valida", /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/g)
       && this.arePasswordsMatching()
@@ -91,7 +91,7 @@ export class RegisterComponent implements OnInit {
     return true
   }
 
-  clear(){
+  clear() {
     this.user = new User("", "")
     this.confirmPassword = ""
   }

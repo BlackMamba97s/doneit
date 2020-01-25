@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserInfoComponent implements OnInit {
 
+  private iconNumber = 0;
 
   constructor() { }
 
@@ -14,5 +15,12 @@ export class UserInfoComponent implements OnInit {
   }
 
 
- 
+
+
+  selectActive(number) {
+    this.iconNumber = number
+  }
+
+
+
 }

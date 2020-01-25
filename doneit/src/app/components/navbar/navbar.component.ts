@@ -32,6 +32,9 @@ export class NavbarComponent implements OnInit {
       }
 
     )
+    if (this.isUserLoggedIn()) {
+      this.userService.getMyPersonalCard().subscribe()
+    }
   }
 
 

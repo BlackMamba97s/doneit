@@ -37,5 +37,16 @@ export class UserService {
     this.personalCardSubject.next(result)
   }
 
+  getUserPersonalCard(username) {
+    return this.httpClient.get<PersonalCard>(`${API_URL}/user-personal-card/${username}`).pipe(
+      map(
+        data => {
+          data.imageUrl = this._sanitizer.bypassSecurityTrustResourceUrl(data.base64StringImage);
+          return data;
+        }
+      )
+    );
+  }
+
 
 }

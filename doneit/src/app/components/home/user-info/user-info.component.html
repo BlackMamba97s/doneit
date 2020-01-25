@@ -3,50 +3,51 @@
 
         <div>
             <div class="list-group-flush">
-                <div class="list-group-item active">
-                    <a a routerLink="/home" class="mb-0"><span style="font-size: 1rem;">
-                            <span style="color:white">
-                                <i class="fa fa-clipboard"></i>
-                            </span>
-                        </span>
-                        Bacheca
-                    </a>
-                </div>
-                <div class="list-group-item">
-                    <a routerLink="/show-profile/user" class="mb-0"><span style="font-size: 1rem;">
-                            <span style="color:gray">
-                                <i class="fa fa-user-circle"></i>
-                            </span>
-                        </span>
-                        Il mio profilo
-                    </a>
-                </div>
-                <div class="list-group-item">
-                    <a routerLink="/my-todo-board" class="mb-0"><span style="font-size: 1rem;">
-                            <span style="color:gray">
-                                <i class="fa fa-id-badge"></i>
-                            </span>
-                        </span>
-                        I miei Todo
-                    </a>
+                <div class="list-group-item" routerLink="/home" routerLinkActive="active-item"
+                    (mouseover)="selectActive(0)" (mouseout)="selectActive(-1)">
+                    <span [ngClass]="{'default-fa': iconNumber != 0, 'active-fa': iconNumber === 0}">
+                        <i class="fa fa-clipboard" routerLinkActive="active-fa"></i>
+                    </span>
+                    Bacheca
                 </div>
 
-                <div class="list-group-item">
-                    <a class="mb-0"><span style="font-size: 1rem;">
-                            <span style="color:gray">
-                                <i class="fa fa-comment"></i>
-                            </span>
-                        </span>
-                        Chat </a>
+                <div class="list-group-item" routerLink="/show-my-profile" routerLinkActive="active-item"
+                    (mouseover)="selectActive(1)" (mouseout)="selectActive(-1)">
+
+                    <span [ngClass]="{'default-fa': iconNumber != 1, 'active-fa': iconNumber === 1}">
+                        <i class="fa fa-user-circle" routerLinkActive="active-fa"></i>
+                    </span>
+                    Il mio profilo
+
+                </div>
+                <div class="list-group-item" routerLink="/my-todo-board" routerLinkActive="active-item"
+                    (mouseover)="selectActive(2)" (mouseout)="selectActive(-1)">
+
+                    <span [ngClass]="{'default-fa': iconNumber != 2, 'active-fa': iconNumber === 2}">
+                        <i class="fa fa-id-badge" routerLinkActive="active-fa"></i>
+                    </span>
+
+                    I miei Todo
+
                 </div>
 
-                <div class="list-group-item">
-                    <a routerLink="/logout" class="mb-0"><span style="font-size: 1rem;">
-                            <span style="color:gray">
-                                <i class="fa fa-sign-out"></i>
-                            </span>
-                        </span>
-                        Logout </a>
+                <div class="list-group-item" routerLink="/chat" routerLinkActive="active-item"
+                    (mouseover)="selectActive(3)" (mouseout)="selectActive(-1)">
+
+                    <span [ngClass]="{'default-fa': iconNumber != 3, 'active-fa': iconNumber === 3}">
+                        <i class="fa fa-comment" routerLinkActive="active-fa"></i>
+                    </span>
+
+                    Chat
+                </div>
+
+                <div routerLink="/logout" class="list-group-item" (mouseover)="selectActive(4)"
+                    (mouseout)="selectActive(-1)">
+
+                    <span [ngClass]="{'default-fa': iconNumber != 4, 'active-fa': iconNumber === 4}">
+                        <i class="fa fa-sign-out" routerLinkActive="active-fa"></i>
+                    </span>
+                    Logout
                 </div>
 
             </div>

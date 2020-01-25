@@ -21,7 +21,6 @@ export class ProfileComponent implements OnInit {
     this.userService.getMyPersonalCard().subscribe(
       result => {
         this.personalCard = result;
-        console.log(this.personalCard)
       }
     )
   }

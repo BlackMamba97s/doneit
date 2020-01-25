@@ -30,6 +30,7 @@ import { CompleteRegisterComponent } from './components/complete-register/comple
 import { NgxImageCompressService } from 'ngx-image-compress';
 import { MyTodoBoardComponent } from './components/my-todo-board/my-todo-board.component';
 import { MyTodoCardComponent } from './components/my-todo-card/my-todo-card.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { MyTodoCardComponent } from './components/my-todo-card/my-todo-card.comp
     CompleteRegisterComponent,
     MyTodoBoardComponent,
     MyTodoCardComponent,
+    UserProfileComponent,
   ],
   imports: [
     BrowserModule,
