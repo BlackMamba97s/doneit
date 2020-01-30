@@ -5,6 +5,8 @@ import { PersonalCard } from '../models/personal-card/personal-card';
 import { BehaviorSubject } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
 import { map } from 'rxjs/operators';
+import { Followers } from '../models/followers';
+import { User } from '../models/user/user.model';
 
 
 
@@ -48,5 +50,21 @@ export class UserService {
     );
   }
 
+  followUser(username) {
+    return this.httpClient.post<any>(`${API_URL}/user/follow-user`, username);
+  }
+
+  getUserFollowers(username) {
+    return this.httpClient.get<User[]>(`${API_URL}/user/${username}/get-followers`);
+  }
+
+  getUserFollowing(username) {
+    return this.httpClient.get<User[]>(`${API_URL}/user/${username}/get-following`);
+  }
+
+  getUserProfileImage(username) {
+    return this.httpClient.get(`${API_URL}/user/${username}/get-image-profile`, { responseType: 'text' });
+
+  }
 
 }

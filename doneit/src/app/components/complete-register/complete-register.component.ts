@@ -53,7 +53,7 @@ export class CompleteRegisterComponent implements OnInit {
     this.imgResultBeforeCompress = image;
     console.warn('Size in bytes was:', this.imageCompress.byteCount(image));
 
-    this.imageCompress.compressFile(image, DOC_ORIENTATION, 50, 50).then(
+    this.imageCompress.compressFile(image, DOC_ORIENTATION, 25, 25).then(
       result => {
         this.imgResultAfterCompress = result;
         this.url = this.imgResultAfterCompress;

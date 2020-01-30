@@ -10,17 +10,18 @@ import { TodoService } from 'src/app/services/todo.service';
 export class TodoBoardComponent implements OnInit {
 
   todoList: Todo[];
-  
+
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
     this.showAllTodo()
   }
 
-  showAllTodo(){
+  showAllTodo() {
     this.todoService.getAllTodo().subscribe(
       response => {
         this.todoList = response;
+        console.log(response)
       },
       error => {
         console.log(error)

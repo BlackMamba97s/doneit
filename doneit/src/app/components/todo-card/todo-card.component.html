@@ -41,13 +41,14 @@
                 </div>
 
                 <div class="row align-items-center ">
-                    <div id="info-todo" class="col-xl-4"><b>3</b> persone seguono questo todo</div>
+                    <div id="info-todo" class="col-xl-4"><b>{{getProponentsNumber()}}</b> persone seguono questo todo
+                    </div>
                     <div class="col-xl-4">
                         <button class="btn btn-secondary btn-rounded" *ngIf="!alreadyProposed()"
                             (click)="handleTodoProposal()">Do It
                         </button>
-                        <p *ngIf="alreadyProposed()">Già proposto</p>
-                        </div>
+                        <p *ngIf="alreadyProposed()">Ti sei già proposto</p>
+                    </div>
                     <div id="icon-div1" class="col-xl-2">
                         <span id="follow-todo" style="font-size: 2rem;">
                             <span style="color: #ffcdd2">

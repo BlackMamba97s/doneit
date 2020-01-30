@@ -31,6 +31,7 @@ import { NgxImageCompressService } from 'ngx-image-compress';
 import { MyTodoBoardComponent } from './components/my-todo-board/my-todo-board.component';
 import { MyTodoCardComponent } from './components/my-todo-card/my-todo-card.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ListItemUserComponent } from './list-item-user/list-item-user.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
     MyTodoBoardComponent,
     MyTodoCardComponent,
     UserProfileComponent,
+    ListItemUserComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PersonalCard } from 'src/app/models/personal-card/personal-card';
 import { UserService } from 'src/app/services/user.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Followers } from 'src/app/models/followers';
+import { User } from 'src/app/models/user/user.model';
 
 @Component({
   selector: 'app-profile',
@@ -12,6 +14,9 @@ export class ProfileComponent implements OnInit {
 
 
   private personalCard = new PersonalCard()
+  private followers: User[]
+  private following: User[]
+  private showCorrectPanel = 0;
 
 
   constructor(private userService: UserService,
@@ -23,7 +28,31 @@ export class ProfileComponent implements OnInit {
         this.personalCard = result;
       }
     )
+    this.userService.getUserFollowers(sessionStorage.getItem("username")).subscribe(
+      result => {
+        console.log(result)
+      }
+    )
+
+    this.userService.getUserFollowers(sessionStorage.getItem("username")).subscribe(
+      result => {
+        console.log(result)
+        this.followers = result;
+      }
+    )
+    this.userService.getUserFollowing(sessionStorage.getItem("username")).subscribe(
+      result => {
+        console.log(result)
+        this.following = result;
+      },
+      error => {
+
+      }
+    )
   }
 
+  private changePanel(number) {
+    this.showCorrectPanel = number;
+  }
 
 }

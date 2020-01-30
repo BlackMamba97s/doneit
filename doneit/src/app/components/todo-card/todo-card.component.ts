@@ -12,13 +12,13 @@ export class TodoCardComponent implements OnInit {
 
   @Input() todo: Todo
   private showCorrectBody = 1
-  
-  
+
+
   constructor(private todoService: TodoService) {
   }
 
   ngOnInit() {
-    
+
   }
 
 
@@ -37,20 +37,21 @@ export class TodoCardComponent implements OnInit {
     this.showCorrectBody = numBody
   }
 
-  alreadyProposed(){
-    if(this.todo.proposals.length != 0){
-      for(let proposal of this.todo.proposals){
-        if(proposal.user.username == sessionStorage.getItem("username")){
+  alreadyProposed() {
+    console.log(this.todo.proposals)
+    if (this.todo.proposals.length != 0) {
+      for (let proposal of this.todo.proposals) {
+        if (proposal.user.username == sessionStorage.getItem("username")) {
           return true;
         }
       }
       return false;
-    }else{
+    } else {
       return false;
     }
   }
 
-  getProponentsNumber(){
+  getProponentsNumber() {
     return this.todo.proposals.length
   }
 
