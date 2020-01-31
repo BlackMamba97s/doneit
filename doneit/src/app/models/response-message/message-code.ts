@@ -5,4 +5,6 @@ export class MessageCode{
     public static SUCCESSFUL_REGISTER = 4
     public static USER_ALREADY_CREATED = 11
     public static FIRST_LOGIN = 13
+    public static PROPOSAL_CREATED = 14;
+    public static CFU_INSUFFICIENT = 15;
 }

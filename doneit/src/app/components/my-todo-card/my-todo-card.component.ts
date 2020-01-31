@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Todo } from '../todo/todo.component';
 import {NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { User } from 'src/app/models/user/user.model';
+import { TodoService } from 'src/app/services/todo.service';
 
 
 
@@ -20,7 +21,7 @@ export class MyTodoCardComponent implements OnInit {
 
   acceptedUser: User
   
-  constructor(
+  constructor(private todoService: TodoService
   ) {     console.log(this.todo);
   }
 
@@ -48,6 +49,17 @@ export class MyTodoCardComponent implements OnInit {
         this.acceptedUser = proposal.user
       }
     }
+  }
+
+  undoAcceptProposal(todo){
+    this.todoService.undoAcceptProposal(todo.id).subscribe(
+      response =>{
+        console.log(response)
+      },
+      error => {
+        console.log(error)
+      }
+    )
   }
 
 }

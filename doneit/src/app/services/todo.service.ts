@@ -47,4 +47,12 @@ export class TodoService {
   refuseProposal(proposalId){
     return this.httpClient.put<any>(`${API_URL}/refuse-proposal/` + proposalId,null)
   }
+
+  undoRefuseProposal(proposalId){
+    return this.httpClient.put<any>(`${API_URL}/undo-refuse-proposal/` + proposalId,null)
+  }
+
+  undoAcceptProposal(todoId){
+    return this.httpClient.put<any>(`${API_URL}/undo-accept-proposal/todo/` + todoId,null)
+  }
 }

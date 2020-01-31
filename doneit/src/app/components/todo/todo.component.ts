@@ -35,6 +35,7 @@ export class TodoComponent implements OnInit {
   handleTodoCreation() {
     this.todoService.createTodo(this.todo).subscribe(
       response => {
+        console.log(response)
       },
       error => {
         console.log(error)

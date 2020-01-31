@@ -54,14 +54,34 @@ export class MyTodoBoardComponent implements OnInit {
   }
 
   refuseProposal(proposal){
+    console.log("rifiuto la proposta:" + proposal.id)
     this.todoService.refuseProposal(proposal.id).subscribe(
       response =>{
         console.log(response)
+        this.updateProposal(proposal,"refused")
       },
       error =>{
         console.log(error)
       }
     )
+  }
+
+  undoRefuse(proposal){
+    this.todoService.undoRefuseProposal(proposal.id).subscribe(
+      response => {
+        console.log(response)
+        this.updateProposal(proposal,"in progress")
+      },
+      error => {
+        console.log(error)
+      }
+    )
+    console.log("annullo la proposta:" + proposal.id)
+  }
+
+  updateProposal(proposal,newState) { 
+    let i = this.currentTodo.proposals.indexOf(proposal);
+    this.currentTodo.proposals[i].state = newState
   }
 
 }

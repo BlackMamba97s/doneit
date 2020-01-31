@@ -17,7 +17,7 @@
         
         <fieldset class = "form-group">
             <select class="browser-default custom-select custom-select-lg mb-3" [(ngModel)]="todo.category" name="selectedValue">
-                <option *ngFor="let category of categories" [ngValue]="category">{{category.name}}</option>
+                <option *ngFor="let category of categories" [ngValue]="category">{{category.name}} ({{category.cfuPrice}} cfu)</option>
             </select>
         </fieldset>
 

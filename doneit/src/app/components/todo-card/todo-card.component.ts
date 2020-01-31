@@ -28,7 +28,7 @@ export class TodoCardComponent implements OnInit {
         console.log(response)
       },
       error => {
-
+        console.log(error)
       }
     )
   }

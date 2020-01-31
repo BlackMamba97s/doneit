@@ -43,7 +43,7 @@
 
                 <div class="row align-items-center ">
                     <div *ngIf="!acceptedUser" id="info-todo" class="col-xl-4"><a (click)="sendMessage()"><b>{{getProponentsNumber()}}</b> persone si sono proposte</a></div>
-                    <div *ngIf="acceptedUser" id="info-todo" class="col-xl-4">{{acceptedUser.username}} sta portando a termine questo todo</div>
+                    <div *ngIf="acceptedUser" id="info-todo" class="col-xl-4">{{acceptedUser.username}} sta portando a termine questo todo  <a  (click) = "undoAcceptProposal(todo)"><b>Annulla</b></a></div>
                     <div class="col-xl-4">
                         
                      <!-- colonna vuota ( prima c'era il bottono )-->
