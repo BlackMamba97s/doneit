@@ -15,14 +15,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" (click)="getMyTodoList('published')">Pubblicati <span
-                  class="sr-only">(current)</span></a>
+            <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'published'}">
+              <a class="nav-link" (click)="getMyTodoList('published')">Pubblicati</a>
             </li>
-            <li class="nav-item">
+            <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'accepted'}">
               <a class="nav-link" (click)="getMyTodoList('accepted')">Accettati</a>
             </li>
-            <li class="nav-item">
+            <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'completed'}">
               <a class="nav-link" (click)="getMyTodoList('completed')">Conclusi</a>
             </li>
             <li class="nav-item">

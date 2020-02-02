@@ -12,11 +12,13 @@ export class MyTodoBoardComponent implements OnInit {
 
   todoList: Todo[];
   currentTodo: Todo;
+  activatedBoard: string
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    //this.showAllTodos()
+    this.getMyTodoList('published')
+    this.activatedBoard = "published"
   }
 
   getMyTodoList(state){
@@ -24,6 +26,7 @@ export class MyTodoBoardComponent implements OnInit {
       response =>{
         console.log(response);
         this.todoList = response
+        this.activatedBoard = state
       },
       error => {
         console.log(error)
@@ -33,8 +36,13 @@ export class MyTodoBoardComponent implements OnInit {
   }
 
   receiveMessage($event){
-    this.currentTodo = $event
-    console.log($event)
+    if($event){
+      this.currentTodo = $event
+    }else{
+      this.getMyTodoList('accepted')
+    }
+    
+   
   }
 
   closeModal(){
@@ -46,6 +54,9 @@ export class MyTodoBoardComponent implements OnInit {
     this.todoService.acceptProposal(this.currentTodo,proposal.id).subscribe(
       response =>{
         console.log(response)
+        this.closeModal()
+        this.getMyTodoList('accepted')
+        
       },
       error =>{
         console.log(error)

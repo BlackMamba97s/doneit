@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { Todo } from '../todo/todo.component';
 import { TodoService } from 'src/app/services/todo.service';
 import { ɵAnimationGroupPlayer } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-todo-card',
@@ -12,9 +13,9 @@ export class TodoCardComponent implements OnInit {
 
   @Input() todo: Todo
   private showCorrectBody = 1
+ 
 
-
-  constructor(private todoService: TodoService) {
+  constructor(private todoService: TodoService, private router: Router) {
   }
 
   ngOnInit() {
@@ -26,6 +27,7 @@ export class TodoCardComponent implements OnInit {
     this.todoService.sendProposal(this.todo).subscribe(
       response => {
 
+        console.log("DIO CANE" + response)
       },
       error => {
     
