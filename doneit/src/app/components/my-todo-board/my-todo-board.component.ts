@@ -16,61 +16,61 @@ export class MyTodoBoardComponent implements OnInit {
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
-    //this.showAllTodos()
+    this.getMyTodoList('published')
   }
 
-  getMyTodoList(state){
+  getMyTodoList(state) {
     this.todoService.getMyTodoList(state).subscribe(
-      response =>{
+      response => {
         console.log(response);
         this.todoList = response
       },
       error => {
         console.log(error)
       }
-      
+
     )
   }
 
-  receiveMessage($event){
+  receiveMessage($event) {
     this.currentTodo = $event
     console.log($event)
   }
 
-  closeModal(){
+  closeModal() {
     this.currentTodo = null;
   }
 
-  acceptProposal(proposal){
+  acceptProposal(proposal) {
     console.log("proposal id: " + proposal.id)
-    this.todoService.acceptProposal(this.currentTodo,proposal.id).subscribe(
-      response =>{
+    this.todoService.acceptProposal(this.currentTodo, proposal.id).subscribe(
+      response => {
         console.log(response)
       },
-      error =>{
+      error => {
         console.log(error)
       }
     )
   }
 
-  refuseProposal(proposal){
+  refuseProposal(proposal) {
     console.log("rifiuto la proposta:" + proposal.id)
     this.todoService.refuseProposal(proposal.id).subscribe(
-      response =>{
+      response => {
         console.log(response)
-        this.updateProposal(proposal,"refused")
+        this.updateProposal(proposal, "refused")
       },
-      error =>{
+      error => {
         console.log(error)
       }
     )
   }
 
-  undoRefuse(proposal){
+  undoRefuse(proposal) {
     this.todoService.undoRefuseProposal(proposal.id).subscribe(
       response => {
         console.log(response)
-        this.updateProposal(proposal,"in progress")
+        this.updateProposal(proposal, "in progress")
       },
       error => {
         console.log(error)
@@ -79,7 +79,7 @@ export class MyTodoBoardComponent implements OnInit {
     console.log("annullo la proposta:" + proposal.id)
   }
 
-  updateProposal(proposal,newState) { 
+  updateProposal(proposal, newState) {
     let i = this.currentTodo.proposals.indexOf(proposal);
     this.currentTodo.proposals[i].state = newState
   }

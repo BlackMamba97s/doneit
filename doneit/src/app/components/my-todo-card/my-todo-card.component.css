@@ -12,13 +12,13 @@
 }
 
 #time{
-    font-size: 0.8rem;
-    color: #9e9e9e;
+    font-size: 1rem;
+    color: #7c7c7c;
 }
 
 #info-todo{
-    font-size: 0.8rem;
-    color: #9e9e9e;
+    font-size: 1rem;
+    color: #7c7c7c;
 }
 
 
@@ -27,21 +27,7 @@
     margin-bottom: 10px;
 }
 
-.btn{
-    width: 125px !important;
-    height: 40px !important;
-}
 
-.modal-body{
-    overflow-y: scroll;
-    height: 70vh;
-}
-
-
-.table tbody td{
-    border:none;
-    vertical-align:text-bottom
-}
 
 @media screen and (min-width: 1200px) { 
     #icon-div1{
@@ -58,9 +44,4 @@
  #description-text{
      margin: 12px !important;
  }
-
- .container{
-     background-color: white;
- }
-
 

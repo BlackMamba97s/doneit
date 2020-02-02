@@ -3,7 +3,14 @@
 
         <div class="col-sm-12 no-gutters" style="background-color: white;">
             <div *ngFor="let t of todoList">
-                <app-todo-card [todo]="t"></app-todo-card>
+                <div *ngIf="personal">
+                    <app-my-todo-card [todo]='t'></app-my-todo-card>
+                </div>
+                <div *ngIf="!personal">
+                    <app-todo-card [todo]="t"></app-todo-card>
+                </div>
+
+                <div style="height: 20px; background-color: #fafafa;"></div>
             </div>
         </div>
 
