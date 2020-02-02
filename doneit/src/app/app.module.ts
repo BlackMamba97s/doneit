@@ -33,6 +33,10 @@ import { MyTodoBoardComponent } from './components/my-todo-board/my-todo-board.c
 import { MyTodoCardComponent } from './components/my-todo-card/my-todo-card.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ListItemUserComponent } from './list-item-user/list-item-user.component';
+import { EventComponent } from './components/event/event.component';
+import { EventBoardComponent } from './event-board/event-board.component';
+import { EventCardComponent } from './event-card/event-card.component';
+
 import { SearchComponent } from './search/search.component';
 import { MatInputModule } from '@angular/material/input';
 import { ChatboxComponent } from './chatbox/chatbox.component';
@@ -63,6 +67,9 @@ import { ChatboxComponent } from './chatbox/chatbox.component';
     MyTodoCardComponent,
     UserProfileComponent,
     ListItemUserComponent,
+    EventComponent,
+    EventBoardComponent,
+    EventCardComponent,
     SearchComponent,
     ChatboxComponent,
   ],

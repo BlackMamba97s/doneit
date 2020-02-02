@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GenericBoardComponent implements OnInit {
 
+  activatedBoard: number = 0
   constructor() { }
 
   ngOnInit() {
+  }
+
+  showBoard(board){
+    this.activatedBoard = board
   }
 
 }
