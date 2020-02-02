@@ -55,6 +55,7 @@ export class MyTodoCardComponent implements OnInit {
     this.todoService.undoAcceptProposal(todo.id).subscribe(
       response =>{
         console.log(response)
+        this.messageEvent.emit(null);
       },
       error => {
         console.log(error)
