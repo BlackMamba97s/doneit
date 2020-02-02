@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreateFormComponent implements OnInit {
 
-  private showCorrectForm;
-
+  private showCorrectForm
+  private activatedForm: string = "todo"
    
   constructor() { }
 
@@ -18,5 +18,12 @@ export class CreateFormComponent implements OnInit {
   selectForm(formNumber){
     this.showCorrectForm = formNumber;
   }
+
+  showForm(form: string){
+    this.activatedForm = form
+    console.log(form)
+  }
+
+
 
 }

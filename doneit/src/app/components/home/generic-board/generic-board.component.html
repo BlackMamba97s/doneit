@@ -6,15 +6,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Mansioni <span class="sr-only">(current)</span></a>
+                <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 0}">
+                    <a class="nav-link" (click)= "showBoard(0)">Mansioni</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Eventi</a>
+                <li class = "nav-item" [ngClass]="{'nav-item': true, 'active': activatedBoard === 1}">
+                    <a class="nav-link" (click) = "showBoard(1)">Eventi</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Post</a>
-                </li>
+              
 
             </ul>
             <ul class="navbar-nav ml-auto">
@@ -26,7 +24,8 @@
         </div>
     </nav>
     <div style="padding: 25px">
-        <app-todo-board></app-todo-board>
+        <app-todo-board *ngIf= "activatedBoard === 0"></app-todo-board>
+        <app-event-board *ngIf= "activatedBoard === 1"></app-event-board>
     </div>
 </div>
 

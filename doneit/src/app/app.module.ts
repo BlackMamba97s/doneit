@@ -32,6 +32,9 @@ import { MyTodoBoardComponent } from './components/my-todo-board/my-todo-board.c
 import { MyTodoCardComponent } from './components/my-todo-card/my-todo-card.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ListItemUserComponent } from './list-item-user/list-item-user.component';
+import { EventComponent } from './components/event/event.component';
+import { EventBoardComponent } from './event-board/event-board.component';
+import { EventCardComponent } from './event-card/event-card.component';
 
 
 @NgModule({
@@ -60,6 +63,9 @@ import { ListItemUserComponent } from './list-item-user/list-item-user.component
     MyTodoCardComponent,
     UserProfileComponent,
     ListItemUserComponent,
+    EventComponent,
+    EventBoardComponent,
+    EventCardComponent,
   ],
   imports: [
     BrowserModule,
