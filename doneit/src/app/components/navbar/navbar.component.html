@@ -46,6 +46,9 @@
     <i class="fa fa-comment"></i>
   </button> -->
 
-  <app-chatbox></app-chatbox>
+  <div *ngIf="showChatButton()">
+    <app-chatbox></app-chatbox>
+  </div>
+
 
 </div>

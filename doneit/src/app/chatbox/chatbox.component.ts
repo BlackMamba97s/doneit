@@ -7,9 +7,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatboxComponent implements OnInit {
 
+  private showChat = true;
+  private closeChat = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+
+  handleChatBox() {
+    if (this.showChat) {
+      this.showChat = false;
+    }
+    else {
+      this.showChat = true;
+    }
+  }
+
+  closeChatBox() {
+    this.closeChat = true
+  }
+
+  openChat(){
+    this.closeChat = false;
+    this.showChat = true;
   }
 
 }

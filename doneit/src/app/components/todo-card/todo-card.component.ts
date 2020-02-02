@@ -25,10 +25,10 @@ export class TodoCardComponent implements OnInit {
   handleTodoProposal() {
     this.todoService.sendProposal(this.todo).subscribe(
       response => {
-        console.log(response)
+
       },
       error => {
-        console.log(error)
+    
       }
     )
   }
@@ -38,7 +38,7 @@ export class TodoCardComponent implements OnInit {
   }
 
   alreadyProposed() {
-    console.log(this.todo.proposals)
+
     if (this.todo.proposals.length != 0) {
       for (let proposal of this.todo.proposals) {
         if (proposal.user.username == sessionStorage.getItem("username")) {
