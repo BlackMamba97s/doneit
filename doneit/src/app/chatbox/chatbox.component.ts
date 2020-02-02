@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonalCard } from '../models/personal-card/personal-card';
+import { User } from '../models/user/user.model';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-chatbox',
@@ -9,10 +12,17 @@ export class ChatboxComponent implements OnInit {
 
   private showChat = false;
   private closeChat = true;
+  private personalCards: PersonalCard[]
 
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
+    this.userService.getAllUsers().subscribe(
+      result => {
+        this.personalCards = result;
+        console.log(this.personalCards)
+      }
+    )
   }
 
 
@@ -29,7 +39,7 @@ export class ChatboxComponent implements OnInit {
     this.closeChat = true
   }
 
-  openChat(){
+  openChat() {
     this.closeChat = false;
     this.showChat = true;
   }

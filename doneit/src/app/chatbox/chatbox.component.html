@@ -2,39 +2,12 @@
 <div class="container-fluid">
     <div id="test">
         <div id="content">
-            <ul class="list-group list-group-flush">
+            <ul class="list-group list-group-flush" *ngFor="let p of personalCards">
                 <li class="list-group-item" (click)="openChat()">
-                    <img src=" https://ptetutorials.com/images/user-profile.png" class="md-avatar rounded-circle"
-                        alt="avatar image"> fra_de_saa
+                    <img [src]="p.base64StringImage" class="md-avatar rounded-circle"
+                        alt="avatar image"> {{p.user.username}}
                 </li>
-                <li class="list-group-item" (click)="openChat()">
-                    <img src=" https://ptetutorials.com/images/user-profile.png" class="md-avatar rounded-circle"
-                        alt="avatar image"> fra_de_saa
-                </li>
-                <li class="list-group-item" (click)="openChat()">
-                    <img src=" https://ptetutorials.com/images/user-profile.png" class="md-avatar rounded-circle"
-                        alt="avatar image"> fra_de_saa
-                </li>
-                <li class="list-group-item" (click)="openChat()">
-                    <img src=" https://ptetutorials.com/images/user-profile.png" class="md-avatar rounded-circle"
-                        alt="avatar image"> fra_de_saa
-                </li>
-                <li class="list-group-item" (click)="openChat()">
-                    <img src=" https://ptetutorials.com/images/user-profile.png" class="md-avatar rounded-circle"
-                        alt="avatar image"> fra_de_saa
-                </li>
-                <li class="list-group-item" (click)="openChat()">
-                    <img src=" https://ptetutorials.com/images/user-profile.png" class="md-avatar rounded-circle"
-                        alt="avatar image"> fra_de_saa
-                </li>
-                <li class="list-group-item" (click)="openChat()">
-                    <img src=" https://ptetutorials.com/images/user-profile.png" class="md-avatar rounded-circle"
-                        alt="avatar image"> fra_de_saa
-                </li>
-                <li class="list-group-item" (click)="openChat()">
-                    <img src=" https://ptetutorials.com/images/user-profile.png" class="md-avatar rounded-circle"
-                        alt="avatar image"> fra_de_saa
-                </li>
+
             </ul>
         </div>
         <button class="btn light-blue darken-3 float btn-block">Chat</button>

@@ -57,6 +57,10 @@ export class NavbarComponent implements OnInit {
     return this.router.routerState.snapshot.url !== '/chat'
   }
 
+  private hideMenu(){
+    return this.router.routerState.snapshot.url != '/complete-register'
+  }
+
 }
 
 

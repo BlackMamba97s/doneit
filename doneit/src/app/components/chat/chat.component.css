@@ -14,7 +14,7 @@
   .container{max-width:1170px; margin:auto;}
   img{ max-width:100%;}
   .inbox_people {
-    background: #f8f8f8 none repeat scroll 0 0;
+    background: #fffefe none repeat scroll 0 0;
     float: left;
     overflow: hidden;
     width: 40%; border-right:1px solid #c4c4c4;
@@ -57,7 +57,7 @@
   .chat_ib p{ font-size:14px; color:#989898; margin:auto}
   .chat_img {
     float: left;
-    width: 11%;
+
   }
   .chat_ib {
     float: left;
@@ -77,7 +77,6 @@
   
   .incoming_msg_img {
     display: inline-block;
-    width: 6%;
   }
   .received_msg {
     display: inline-block;
@@ -147,4 +146,9 @@
   .msg_history {
     height: 516px;
     overflow-y: auto;
+  }
+
+  .chat_list:hover{
+    background:#ebebeb;
+    cursor: pointer;
   }

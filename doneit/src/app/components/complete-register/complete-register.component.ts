@@ -34,7 +34,7 @@ export class CompleteRegisterComponent implements OnInit {
       })
     this.userService.getMyPersonalCard().subscribe(
       result => {
-
+        console.log(result)
       },
       error => {
 
@@ -122,6 +122,9 @@ export class CompleteRegisterComponent implements OnInit {
     this.responseMessage = result;
     if (this.responseMessage.messageCode === MessageCode.SUCCESSFUL_REGISTER) {
       sessionStorage.removeItem("firstLogin")
+      this.router.navigate(['home'])
+    }
+    else if (this.responseMessage.messageCode === MessageCode.INCOMPLETE_REGISTER) {
       this.router.navigate(['home'])
     }
     else {

@@ -39,7 +39,7 @@
   </div>
 </nav>
 
-<div *ngIf="userAuth.isUserLoggedIn() && !userAuth.isFirstLogin()">
+<div *ngIf="userAuth.isUserLoggedIn() && hideMenu()">
   <app-user-info></app-user-info>
 
   <!-- <button *ngIf="showChatButton()" id="floating-btn" type="button" class="btn btn-primary btn-circle btn-xl">

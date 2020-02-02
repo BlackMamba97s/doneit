@@ -72,4 +72,11 @@ export class UserService {
 
   }
 
+  getAllUsers(){
+    return this.httpClient.get<PersonalCard[]>(`${API_URL}/user/get-all-users`);
+  }
+
+  getUsersImages(users){
+    return this.httpClient.post<string[]>(`${API_URL}/user/get-users-images`, users);
+  }
 }
