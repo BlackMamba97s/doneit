@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class UserInfoComponent implements OnInit {
 
   private iconNumber = -1;
+  
 
   constructor() { }
 

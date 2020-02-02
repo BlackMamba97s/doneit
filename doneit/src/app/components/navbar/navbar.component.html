@@ -10,8 +10,8 @@
     <ul class="navbar-nav ml-auto mr-auto">
       <form class="form-inline" id="searchbar-form">
         <div id="searchbar" class="md-form my-0">
-          <input id="search-input" class="form-control" type="text" placeholder="Cerca" aria-label="Search">
-          <i class="fa fa-search text-white ml-3" aria-hidden="true"></i>
+          <!-- <input id="search-input" class="form-control" type="text" placeholder="Cerca" aria-label="Search"> -->
+          <app-search></app-search>
         </div>
       </form>
     </ul>
@@ -41,4 +41,11 @@
 
 <div *ngIf="userAuth.isUserLoggedIn() && !userAuth.isFirstLogin()">
   <app-user-info></app-user-info>
+
+  <!-- <button *ngIf="showChatButton()" id="floating-btn" type="button" class="btn btn-primary btn-circle btn-xl">
+    <i class="fa fa-comment"></i>
+  </button> -->
+
+  <app-chatbox></app-chatbox>
+
 </div>

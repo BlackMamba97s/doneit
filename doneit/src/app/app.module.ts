@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { FormsModule } from '@angular/forms'
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { MatSliderModule } from '@angular/material/slider';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -32,7 +33,9 @@ import { MyTodoBoardComponent } from './components/my-todo-board/my-todo-board.c
 import { MyTodoCardComponent } from './components/my-todo-card/my-todo-card.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
 import { ListItemUserComponent } from './list-item-user/list-item-user.component';
-
+import { SearchComponent } from './search/search.component';
+import { MatInputModule } from '@angular/material/input';
+import { ChatboxComponent } from './chatbox/chatbox.component';
 
 @NgModule({
   declarations: [
@@ -60,14 +63,21 @@ import { ListItemUserComponent } from './list-item-user/list-item-user.component
     MyTodoCardComponent,
     UserProfileComponent,
     ListItemUserComponent,
+    SearchComponent,
+    ChatboxComponent,
   ],
   imports: [
+    MatSliderModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatInputModule,
+    MatAutocompleteModule
   ],
+  exports: [MatInputModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }, [NgxImageCompressService]
   ],

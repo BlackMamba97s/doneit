@@ -13,6 +13,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CompleteRegisterComponent } from './components/complete-register/complete-register.component';
 import { MyTodoBoardComponent } from './components/my-todo-board/my-todo-board.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { SearchComponent } from './search/search.component';
+import { ChatComponent } from './components/chat/chat.component';
 
 
 
@@ -30,6 +32,8 @@ const routes: Routes = [
   { path: 'show-profile/:username', component: UserProfileComponent, canActivate: [RouteGuardService] },
   { path: 'complete-register', component: CompleteRegisterComponent, canActivate: [RouteGuardService] },
   { path: "my-todo-board", component: MyTodoBoardComponent, canActivate: [RouteGuardService] },
+  { path: "chat", component: ChatComponent, canActivate: [RouteGuardService] },
+
   // {path: 'register', component: RegisterComponent, canActivate: [RouteGuardService]},
   { path: '**', component: ErrorComponent }
 ];

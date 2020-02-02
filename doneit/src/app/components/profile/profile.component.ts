@@ -30,19 +30,19 @@ export class ProfileComponent implements OnInit {
     )
     this.userService.getUserFollowers(sessionStorage.getItem("username")).subscribe(
       result => {
-        console.log(result)
+
       }
     )
 
     this.userService.getUserFollowers(sessionStorage.getItem("username")).subscribe(
       result => {
-        console.log(result)
+
         this.followers = result;
       }
     )
     this.userService.getUserFollowing(sessionStorage.getItem("username")).subscribe(
       result => {
-        console.log(result)
+
         this.following = result;
       },
       error => {
@@ -51,8 +51,5 @@ export class ProfileComponent implements OnInit {
     )
   }
 
-  private changePanel(number) {
-    this.showCorrectPanel = number;
-  }
 
 }
