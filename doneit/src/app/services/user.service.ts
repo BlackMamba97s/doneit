@@ -67,4 +67,9 @@ export class UserService {
 
   }
 
+  getUsernameStartedWithString(partialUsername) {
+    return this.httpClient.get<string[]>(`${API_URL}/user/get-user-started-with/${partialUsername}`);
+
+  }
+
 }

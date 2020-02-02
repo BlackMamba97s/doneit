@@ -22,7 +22,31 @@ export class UserProfileComponent implements OnInit {
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.subscribeRouter()
     this.username = this.route.snapshot.params['username']
+    this.getPersonalCard()
+    this.getUserFollowers()
+    this.getUserFollowing()
+  }
+
+  followUser(username) {
+    this.userService.followUser(username).subscribe(
+      result => {
+
+
+
+      },
+      error => {
+
+      }
+    )
+  }
+
+  private changePanel(number) {
+    this.showCorrectPanel = number;
+  }
+
+  private getPersonalCard() {
     this.userService.getUserPersonalCard(this.username).subscribe(
       result => {
         if (result) {
@@ -30,21 +54,27 @@ export class UserProfileComponent implements OnInit {
           this.personalCard = result;
         }
         else {
-          console.log("errore")
+
         }
       },
       error => {
       }
     )
+  }
+
+  private getUserFollowers() {
     this.userService.getUserFollowers(this.username).subscribe(
       result => {
-        console.log(result)
+
         this.followers = result;
       }
     )
+  }
+
+  private getUserFollowing() {
     this.userService.getUserFollowing(this.username).subscribe(
       result => {
-        console.log(result)
+
         this.following = result;
       },
       error => {
@@ -53,22 +83,15 @@ export class UserProfileComponent implements OnInit {
     )
   }
 
-  followUser(username) {
-    this.userService.followUser(username).subscribe(
-      result => {
-
-        console.log(result)
-
-      },
-      error => {
-        console.log(error)
-      }
-    )
+  private subscribeRouter() {
+    this.route.params.subscribe(params => {
+      this.username = params['username']
+      this.getPersonalCard()
+      this.getUserFollowers()
+      this.getUserFollowing()
+    });
   }
 
-  private changePanel(number) {
-    this.showCorrectPanel = number;
-  }
 
 
 }

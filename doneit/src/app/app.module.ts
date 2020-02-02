@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { FormsModule } from '@angular/forms'
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { MatSliderModule } from '@angular/material/slider';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -36,6 +37,9 @@ import { EventComponent } from './components/event/event.component';
 import { EventBoardComponent } from './event-board/event-board.component';
 import { EventCardComponent } from './event-card/event-card.component';
 
+import { SearchComponent } from './search/search.component';
+import { MatInputModule } from '@angular/material/input';
+import { ChatboxComponent } from './chatbox/chatbox.component';
 
 @NgModule({
   declarations: [
@@ -66,14 +70,21 @@ import { EventCardComponent } from './event-card/event-card.component';
     EventComponent,
     EventBoardComponent,
     EventCardComponent,
+    SearchComponent,
+    ChatboxComponent,
   ],
   imports: [
+    MatSliderModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatInputModule,
+    MatAutocompleteModule
   ],
+  exports: [MatInputModule],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpInterceptorService, multi: true }, [NgxImageCompressService]
   ],

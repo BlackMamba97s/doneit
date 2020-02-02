@@ -15,13 +15,5 @@ export class ChatComponent implements OnInit {
   ngOnInit() {
   }
 
-  handleChat(){
-    if(this.showChat === 1){
-      this.showChat = 0
-    }
-    else{
-      this.showChat = 1
-    }
-  }
 
 }
