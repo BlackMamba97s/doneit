@@ -36,7 +36,6 @@ import { ListItemUserComponent } from './list-item-user/list-item-user.component
 import { EventComponent } from './components/event/event.component';
 import { EventBoardComponent } from './event-board/event-board.component';
 import { EventCardComponent } from './event-card/event-card.component';
-
 import { SearchComponent } from './search/search.component';
 import { MatInputModule } from '@angular/material/input';
 import { ChatboxComponent } from './chatbox/chatbox.component';

@@ -6,6 +6,7 @@
                 <option value="event">Evento</option>
                 <option>Storia</option>
             </select>
+        
             <app-todo *ngIf="activatedForm == 'todo'"></app-todo>
             <app-event *ngIf="activatedForm == 'event'"></app-event>
         </div>

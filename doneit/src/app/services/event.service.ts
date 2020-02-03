@@ -17,4 +17,7 @@ export class EventService {
     return this.httpCLient.get<Event[]>(`${API_URL}/active-event-list`)
   }
 
+  handleAddressChange($event){
+    console.log($event)
+  }
 }

@@ -24,6 +24,4 @@ export class CreateFormComponent implements OnInit {
     console.log(form)
   }
 
-
-
 }

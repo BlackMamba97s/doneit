@@ -1,10 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/user/user.model';
 import { Category } from 'src/app/models/category/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { Proposal } from 'src/app/models/proposal/proposal';
+import { TodoCardComponent } from '../todo-card/todo-card.component';
+import { TodoBoardComponent } from '../home/todo-board/todo-board.component';
+import {MessageCode} from 'src/app/models/response-message/message-code'
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 
 @Component({
   selector: 'app-todo',
@@ -13,14 +17,14 @@ import { Proposal } from 'src/app/models/proposal/proposal';
 })
 export class TodoComponent implements OnInit {
 
-
   private categories: Category[]
   private todo: Todo = new Todo()
   private todoId: number
 
-
-
-  constructor(private todoService: TodoService, private categoryService: CategoryService, private activatedRoute: ActivatedRoute, private router: Router) { }
+  constructor(private todoService: TodoService, 
+    private categoryService: CategoryService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
 
   ngOnInit() {
@@ -39,7 +43,8 @@ export class TodoComponent implements OnInit {
       },
       error => {
         console.log(error)
-      }
+          
+        }
     )
 
   }
@@ -77,6 +82,7 @@ export class TodoComponent implements OnInit {
 
     )
   }
+  
 
 }
 
