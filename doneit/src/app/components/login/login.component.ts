@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { User } from 'src/app/models/user/user.model';
 import { LoginAuthenticationService } from 'src/app/services/login-authentication.service';
 import { Router } from '@angular/router';
 import { MessageCode } from 'src/app/models/response-message/message-code';
 import { ResponseMessage } from 'src/app/models/response-message/response-message';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
 
 
 @Component({
@@ -68,4 +69,5 @@ export class LoginComponent implements OnInit {
         break;
     }
   }
+
 }

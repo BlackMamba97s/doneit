@@ -9,4 +9,5 @@ export class MessageCode{
     public static CFU_INSUFFICIENT = 15;
     public static INCOMPLETE_REGISTER = 16;
     public static TODO_CREATED = 6
+    public static EVENT_CREATED = 17;
 }

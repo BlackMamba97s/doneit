@@ -18,7 +18,11 @@
         
         <fieldset class = "form-group">
             <label>Luogo: </label>
-            <input type = "text" name = "Luogo" [(ngModel)] = "eventPost.place">
+            <!--<input type = "text" name = "Luogo" [(ngModel)] = "eventPost.place">-->
+            <input type = "text" ngx-google-places-autocomplete [options]="{
+                types: [],
+                componentRestrictions: { country: 'IT' }
+                }" #placesRef="ngx-places"  (onAddressChange)="handleAddressChange($event)"/>
             
         </fieldset>
 

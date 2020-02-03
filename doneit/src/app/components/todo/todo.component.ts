@@ -20,6 +20,7 @@ export class TodoComponent implements OnInit {
   private categories: Category[]
   private todo: Todo = new Todo()
   private todoId: number
+  private todoResponseMessage: number
 
   constructor(private todoService: TodoService, 
     private categoryService: CategoryService,
@@ -28,6 +29,10 @@ export class TodoComponent implements OnInit {
 
 
   ngOnInit() {
+      this.todoService.todoResponseMessage.subscribe(m => {
+      this.todoResponseMessage = m
+    });
+
     this.todoId = this.activatedRoute.snapshot.params['id']
     if (this.todoId) { // se todoId è undefined vuol dire che si vuole creare un TODO
       this.retrieveTodo(this.todoId)
@@ -40,13 +45,16 @@ export class TodoComponent implements OnInit {
     this.todoService.createTodo(this.todo).subscribe(
       response => {
         console.log(response)
+        this.todoService.setTodoCreationResponse(MessageCode.TODO_CREATED)
       },
       error => {
         console.log(error)
-          
+        if(error.error.messageCode === MessageCode.CFU_INSUFFICIENT){
+          this.todoService.setTodoCreationResponse(MessageCode.CFU_INSUFFICIENT)
         }
+      }
     )
-
+      
   }
 
   handleTodoUpdate() {

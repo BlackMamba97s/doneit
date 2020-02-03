@@ -25,13 +25,13 @@
             <div *ngIf="showCorrectBody === 1">
                 <div class="row align-items-center ">
                     <div class="col-xl-3">
-                        <a class="nav-link p-0" href="#">
+                        <a class="nav-link p-0" routerLink = "/show-profile/{{todo.user.username}}">
                             <img src=" https://ptetutorials.com/images/user-profile.png" class="rounded-circle"
                                 height="50px" width="50px">
                         </a>
                     </div>
                     <div class="col-xl-6">
-                        <h5 style="color: #01579b;">{{todo.user.username}}</h5>
+                        <h5  style="color: #01579b;">{{todo.user.username}}</h5>
                     </div>
                     <div class="col-xl-3">
                         <h5 id="time">2 minuti fa</h5>

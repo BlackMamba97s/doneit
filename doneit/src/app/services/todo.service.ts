@@ -3,15 +3,25 @@ import { HttpClient } from '@angular/common/http';
 import { API_URL } from '../constants/constant';
 import { Todo } from '../components/todo/todo.component';
 import { ResponseMessage } from '../models/response-message/response-message';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TodoService {
 
-  constructor(private httpClient: HttpClient) { }
+  todoCreationResponse = -1;
+  todoResponseMessage: BehaviorSubject<number>;
+
+  constructor(private httpClient: HttpClient) { 
+    this.todoResponseMessage = new BehaviorSubject(this.todoCreationResponse)
+  }
 
 
+  setTodoCreationResponse(messageCode){
+    this.todoResponseMessage.next(messageCode)
+  }
+  
   createTodo(todo){
     return this.httpClient.post(`${API_URL}/create-todo`, todo)
   }
