@@ -1,1 +1,73 @@
-{{eventPost.title}}
+<div class="container">
+    <div class="text-center">
+        <div class="card-header" style="background-color: #fafafa;">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class = "nav-link active">Evento</a>
+                </li>
+                <!--
+                    <li class="nav-item nav-link">
+                        <a class="text-primary" *ngIf="!alreadyProposed()" (click)=" handleTodoProposal()">Proponiti</a>
+                        <a class="text-warning" *ngIf="alreadyProposed()">Già proposto</a>
+                    </li>
+                -->
+                <li class="nav-item nav-link">
+                    <a class="text-success">Feedback</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a [ngClass]="{'nav-link': true, 'active': showCorrectBody === 3}"
+                        (click)="changeBody(3)">Feedback</a>
+                </li> -->
+            </ul>
+        </div>
+        <div class="card-body">
+            <div>
+                <div class="row align-items-center ">
+                    <div class="col-xl-3">
+                        <a class="nav-link p-0" routerLink = "/show-profile/{{eventPost.user.username}}" >  
+                            <img src=" https://ptetutorials.com/images/user-profile.png" class="rounded-circle"
+                                height="50px" width="50px">
+                        </a>
+                    </div>
+                    <div class="col-xl-6">
+                        <h5  style="color: #01579b;">{{eventPost.user.username}}</h5>
+                    </div>
+                    <div class="col-xl-3">
+                        <h5 id="time">{{eventPost.date | date: 'dd/MM/yyyy'}}</h5>
+                    </div>
+                </div>
+
+                <div class="row align-items-center" id="todo-title">
+                    <div class="col-sm-12">
+                        <h5>{{eventPost.title}}</h5>
+                    </div>
+                </div>
+
+                <div class="row align-items-center">
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <textarea readonly class="form-control" id="exampleFormControlTextarea3" rows="3"
+                                style="padding: 10px; border-radius: 10px;">{{eventPost.description}}</textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row align-items-center ">
+                    <div id="info-todo" class="col-xl-7"><b>5</b> persone partecipano a questo evento </div>
+                
+                    <div class = "col-xl-3"></div>
+
+                    <div id="icon-div2" class="col-xl-2">
+                        <span style="font-size: 2rem;">
+                            <span style="color: #4a8bc9">
+                                <a (click) = "openMap()" title="{{eventPost.place}}"><i class="fa fa-map-marker" aria-hidden="true"></i></a>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+</div>

@@ -36,6 +36,7 @@ export class MyTodoBoardComponent implements OnInit {
   }
 
   receiveMessage($event) {
+    console.log("DIO CANE")
     if ($event) {
       this.currentTodo = $event
     } else {

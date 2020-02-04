@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EventService } from '../services/event.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-event-board',
@@ -9,8 +10,10 @@ import { EventService } from '../services/event.service';
 export class EventBoardComponent implements OnInit {
 
   eventList: Event[]
+  isMapOpen = false
+  placeId: string
 
-  constructor(private eventService: EventService) { }
+  constructor(private eventService: EventService,private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.getActiveEvents()
@@ -26,6 +29,20 @@ export class EventBoardComponent implements OnInit {
         console.log(error)
       }
     )
+  }
+
+  openMap($event){
+    this.placeId = $event
+    this.isMapOpen = true
+  }
+
+  closeMap(){
+    this.isMapOpen = false
+    this.placeId = null
+  }
+
+  sanitizeUrl(){
+    return this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyB1A4WVaFhrtCkvVdpx_cobXShk_RGtW-8&q=place_id:" + this.placeId)
   }
 
 }
