@@ -53,7 +53,7 @@
 </div>
 
 
-<div *ngIf="currentTodo" id="myModal" class="modal">
+<div *ngIf="currentTodo" (click)="closeModal()" id="myModal" class="modal">
   <div class="modal-content">
     <span (click)="closeModal()" class="close">×</span>
     <span id="modal-title">Utenti proposti</span>

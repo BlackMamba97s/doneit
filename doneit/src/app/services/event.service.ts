@@ -27,6 +27,10 @@ export class EventService {
     return this.httpCLient.get<Event[]>(`${API_URL}/active-event-list`)
   }
 
+  getEventListByUsername(username){
+    return this.httpCLient.get<Event[]>(`${API_URL}/event-list/users/`+username)
+  }
+  
   handleAddressChange($event){
     console.log($event)
   }
