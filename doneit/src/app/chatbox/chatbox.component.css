@@ -34,6 +34,10 @@
       padding: 0px;
       z-index: 1;
   }
+
+  .bold{
+    font-weight: bold;
+  }
   
   #content::-webkit-scrollbar {
       display: none;
@@ -56,9 +60,8 @@
   
     .list-group-item{
       background-color: #fafafa;
-   
       font-size: small;
-  
+      margin-top: 10px;
     }
   
     .list-group-item:hover{

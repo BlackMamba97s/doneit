@@ -4,7 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { PersonalCard } from 'src/app/models/personal-card/personal-card';
 import { ChatMessage, SocketChatMessage } from 'src/app/models/chat-message';
 import { ChatService } from 'src/app/services/chat.service';
-import { WebSocketAPI } from 'src/app/services/WebSocketApi';
+
 
 @Component({
   selector: 'app-chat',
@@ -15,8 +15,9 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('scrollMe', { static: false }) private myScrollContainer: ElementRef;
 
-  private webSocketApi = new WebSocketAPI();
+  // private webSocketApi = new WebSocketAPI();
 
+  username: string
   private personalCards: PersonalCard[]
   private imagePath: string[]
   private currentUser = new PersonalCard()
@@ -28,22 +29,23 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   private map: Map<string, ChatMessage[]> = new Map()
   private chatInfo: Map<String, boolean> = new Map()
   private lastMessage: Map<String, String> = new Map()
+  private firstIterationIgnore: boolean = false
 
   constructor(private userService: UserService, private chatService: ChatService) { }
 
   ngOnInit() {
-    this.webSocketApi.socketChatMessageSubject.subscribe(
+    this.username = sessionStorage.getItem("username")
+    this.chatService.socketChatMessageSubject.subscribe(
       result => {
         let socketChatMessage = result
-        if (socketChatMessage.content) {
+        if (socketChatMessage.content && this.firstIterationIgnore) {
           this.addReceivedMessage(socketChatMessage)
         }
+        this.firstIterationIgnore = true
       },
       error => {
-
       }
     )
-    this.webSocketApi.connect()
     this.scrollToBottom();
     this.userService.getAllUsers().subscribe(
       result => {
@@ -54,7 +56,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnDestroy() {
-    this.webSocketApi.disconnect()
+
   }
 
   ngAfterViewChecked() {
@@ -79,7 +81,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   toBeRead(i: number) {
     let username = this.personalCards[i].user.username
-    console.log(username + " " + this.chatInfo[username])
     return this.chatInfo[username]
   }
 
@@ -110,7 +111,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   sendMessage() {
     let userTo = this.currentUser.user.username
-    this.webSocketApi.sendChatMessage(userTo, this.sendingMessage)
+    this.chatService.sendChatMessage(userTo, this.sendingMessage)
     this.addSentMessage(userTo)
     this.sendingMessage = ''
   }
