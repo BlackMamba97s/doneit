@@ -12,7 +12,6 @@ export class HttpInterceptorService implements HttpInterceptor {
 
     let token = sessionStorage.getItem("token");
     let username = sessionStorage.getItem("username");
-
     if (token && username) {
       request = request.clone({
         setHeaders: {

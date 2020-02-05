@@ -20,7 +20,6 @@ export class ChatboxComponent implements OnInit {
     this.userService.getAllUsers().subscribe(
       result => {
         this.personalCards = result;
-        console.log(this.personalCards)
       }
     )
   }

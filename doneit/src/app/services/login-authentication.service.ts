@@ -12,15 +12,15 @@ export class LoginAuthenticationService {
   constructor(private httpClient: HttpClient) { }
 
 
-  executeLoginAuthentication(user){
-    return this.httpClient.post<ResponseMessage>('http://localhost:8080/authenticate-user', user)
+  executeLoginAuthentication(user) {
+    return this.httpClient.post<ResponseMessage>(`${API_URL}/authenticate-user`, user)
   }
 
-  isUserLoggedIn(){
+  isUserLoggedIn() {
     return sessionStorage.getItem("username")
   }
 
-  isFirstLogin(){
+  isFirstLogin() {
     return sessionStorage.getItem("firstLogin");
   }
 

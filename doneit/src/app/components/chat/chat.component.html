@@ -1,4 +1,5 @@
 <div class="container-fluid">
+
     <div class="messaging">
         <div class="inbox_msg">
             <div class="inbox_people">
@@ -15,55 +16,36 @@
                             <div class="chat_img"> <img class="md-avatar rounded-circle" [src]="p.base64StringImage"
                                     alt="sunil" height="30px" width="30px"> </div>
                             <div class="chat_ib">
-                                <h5>{{p.user.username}} <span class="chat_date">Dec 25</span></h5>
-                                <p>Test, which is a new approach to have all solutions
-                                    astrology under one roof.</p>
+                                <h5 [ngClass]="{'chat_ib_active': toBeRead(i)}">
+                                    {{p.user.username}} <span class="chat_date"></span>
+                                </h5>
+                                <p *ngIf="lastMessage[p.user.username]" [ngClass]="{'chat_ib_active': toBeRead(i)}">
+                                    {{lastMessage[p.user.username]}}</p>
+                                <p *ngIf="!lastMessage[p.user.username]">Conversazione con {{p.user.username}}</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="mesgs" *ngIf="showInboxMessage">
-                <div class="msg_history">
-                    <div class="incoming_msg">
-                        <div class="incoming_msg_img"> <img class="md-avatar rounded-circle"
-                                [src]="currentUser.base64StringImage" alt="sunil" height="50px" width="50px"> </div>
-                        <div class="received_msg">
-                            <div class="received_withd_msg">
-                                <p>Messaggio inviato da {{currentUser.user.username}}</p>
-                                <span class="time_date"> 11:01 AM | June 9</span>
+                <div class="msg_history" #scrollMe>
+                    <div *ngFor=" let c of chatMessage">
+                        <div class="incoming_msg">
+                            <div *ngIf="isReceived(c)">
+                                <div class="incoming_msg_img"> <img class="md-avatar rounded-circle"
+                                        [src]="currentUser.base64StringImage" alt="sunil" height="30px" width="30px">
+                                </div>
+                                <div class="received_msg">
+                                    <div class="received_withd_msg">
+                                        <p>{{c.content}}</p>
+                                        <span class="time_date"> 11:01 AM | June 9</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="outgoing_msg">
-                        <div class="sent_msg">
-                            <p>Test which is a new approach to have all
-                                solutions</p>
-                            <span class="time_date"> 11:01 AM | June 9</span>
-                        </div>
-                    </div>
-                    <div class="incoming_msg">
-                        <div class="incoming_msg_img"> <img class="md-avatar rounded-circle"
-                                [src]="currentUser.base64StringImage" alt="sunil" height="50px" width="50px"> </div>
-                        <div class="received_msg">
-                            <div class="received_withd_msg">
-                                <p>Messaggio inviato da {{currentUser.user.username}}</p>
-                                <span class="time_date"> 11:01 AM | June 9</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="outgoing_msg">
-                        <div class="sent_msg">
-                            <p>Apollo University, Delhi, India Test</p>
-                            <span class="time_date"> 11:01 AM | Today</span>
-                        </div>
-                    </div>
-                    <div class="incoming_msg">
-                        <div class="incoming_msg_img"> <img class="md-avatar rounded-circle"
-                                [src]="currentUser.base64StringImage" alt="sunil" height="50px" width="50px"> </div>
-                        <div class="received_msg">
-                            <div class="received_withd_msg">
-                                <p>Messaggio inviato da {{currentUser.user.username}}</p>
+                        <div class="outgoing_msg" *ngIf="isSent(c)">
+                            <div class="sent_msg">
+                                <p>{{c.content}}</p>
                                 <span class="time_date"> 11:01 AM | June 9</span>
                             </div>
                         </div>
@@ -71,9 +53,12 @@
                 </div>
                 <div class="type_msg">
                     <div class="input_msg_write">
-                        <input type="text" class="write_msg" placeholder="Type a message" />
-                        <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o"
-                                aria-hidden="true"></i></button>
+                        <form (ngSubmit)="sendMessage()">
+                            <input type="text" class="write_msg" placeholder="Scrivi un messaggio"
+                                [(ngModel)]="sendingMessage" name="sendingMessage" />
+                            <button class="msg_send_btn" type="submit"><i class="fa fa-paper-plane-o"
+                                    aria-hidden="true"></i></button>
+                        </form>
                     </div>
                 </div>
             </div>
