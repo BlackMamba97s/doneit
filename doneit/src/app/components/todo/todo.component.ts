@@ -46,6 +46,7 @@ export class TodoComponent implements OnInit {
       response => {
         console.log(response)
         this.todoService.setTodoCreationResponse(MessageCode.TODO_CREATED)
+        this.cleanFields()
       },
       error => {
         console.log(error)
@@ -91,6 +92,12 @@ export class TodoComponent implements OnInit {
     )
   }
   
+  cleanFields(){
+    this.todo.title = ""
+    this.todo.description = ""
+    this.todo.expirationDate = null
+    this.todo.category = null
+  }
 
 }
 

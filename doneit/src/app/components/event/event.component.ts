@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { EventService } from 'src/app/services/event.service';
 import { MessageCode } from 'src/app/models/response-message/message-code';
 import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
 import { User } from 'src/app/models/user/user.model';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { NgForm } from '@angular/forms';
+import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
+
 
 @Component({
   selector: 'app-event',
@@ -15,6 +18,7 @@ export class EventComponent implements OnInit {
 
   eventPost: Event = new Event()
   eventResponseMessage: number
+
   constructor(private eventService: EventService) {
   }
 
@@ -31,6 +35,7 @@ export class EventComponent implements OnInit {
       response => {
         console.log(response)
         this.eventService.setEventCreationResponse(MessageCode.EVENT_CREATED)
+        this.cleanFields()
       },
       error => {
         console.log(error)
@@ -45,7 +50,13 @@ export class EventComponent implements OnInit {
     this.eventPost.placeId = $event.place_id
    }
 
-   
+   cleanFields(){
+     
+     this.eventPost.title = ""
+     this.eventPost.description = ""
+     this.eventPost.date = null
+     this.eventPost.place = ""
+   }
 }
 
 export class Event{

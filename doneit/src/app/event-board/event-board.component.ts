@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EventService } from '../services/event.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { RefreshService } from '../services/refresh.service';
 
 @Component({
   selector: 'app-event-board',
@@ -13,10 +14,14 @@ export class EventBoardComponent implements OnInit {
   isMapOpen = false
   placeId: string
 
-  constructor(private eventService: EventService,private sanitizer: DomSanitizer) { }
+  constructor(private eventService: EventService,
+    private sanitizer: DomSanitizer, private refreshService: RefreshService) { }
 
   ngOnInit() {
     this.getActiveEvents()
+    this.refreshService.eventRefreshMessage.subscribe(m => {
+      this.getActiveEvents()
+    })
   }
 
   getActiveEvents(){

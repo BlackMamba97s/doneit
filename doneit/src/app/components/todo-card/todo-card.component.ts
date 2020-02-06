@@ -13,24 +13,25 @@ export class TodoCardComponent implements OnInit {
 
   @Input() todo: Todo
   private showCorrectBody = 1
- 
+  alreadyProposed: boolean
+  proponentsNumber: number
+  @Output() messageEvent = new EventEmitter<Todo>()
 
   constructor(private todoService: TodoService, private router: Router) {
   }
 
   ngOnInit() {
-
+    this.alreadyProposed = this.checkAlreadyProposed()
+    this.proponentsNumber = this.getProponentsNumber()
   }
 
 
   handleTodoProposal() {
     this.todoService.sendProposal(this.todo).subscribe(
       response => {
-
-        console.log("DIO CANE" + response)
+        this.refreshTodo()
       },
       error => {
-    
       }
     )
   }
@@ -39,8 +40,7 @@ export class TodoCardComponent implements OnInit {
     this.showCorrectBody = numBody
   }
 
-  alreadyProposed() {
-
+  checkAlreadyProposed() {
     if (this.todo.proposals.length != 0) {
       for (let proposal of this.todo.proposals) {
         if (proposal.user.username == sessionStorage.getItem("username")) {
@@ -57,5 +57,25 @@ export class TodoCardComponent implements OnInit {
     return this.todo.proposals.length
   }
 
+  refreshTodo(){
+    this.alreadyProposed = true
+    this.todoService.getGenericTodo(this.todo.id).subscribe(
+      response => {
+        this.todo = response
+        this.proponentsNumber = this.getProponentsNumber()
+      }
+    )
+  }
 
+  isMyTodo(){
+    if(sessionStorage.getItem("username") == this.todo.user.username){
+      return true;
+    }
+    return false;
+  }
+
+
+  sendMessage(){
+    this.messageEvent.emit(this.todo);
+  }
 }
