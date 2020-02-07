@@ -24,10 +24,10 @@ export class ProfileBoardComponent implements OnInit {
   constructor(private todoService: TodoService, private eventService: EventService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(){
-    this.showTodoBoard()
+    this.showPublishedTodoBoard()
   }
 
-  showTodoBoard(){
+  showPublishedTodoBoard(){
     this.activatedBoard = 0
     this.eventList = null
     this.todoService.getTodoListByUserAndState(this.username,"published").subscribe(
@@ -39,11 +39,25 @@ export class ProfileBoardComponent implements OnInit {
         console.log(error)
       }
     )
-    
+
+  }
+
+  showCompletedTodoBoard(){
+    this.activatedBoard = 1
+    this.eventList = null
+    this.todoService.getTodoListByUserAndState(this.username,"completed").subscribe(
+      response => {
+        console.log(response)
+        this.todoList = response
+      },
+      error => {
+        console.log(error)
+      }
+    )
   }
 
   showEventBoard(){
-    this.activatedBoard = 1
+    this.activatedBoard = 2
     this.todoList = null
     this.eventService.getEventListByUsername(this.username).subscribe(
       response => {

@@ -7,14 +7,18 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 0}">
-                    <a class="nav-link" (click)= "showTodoBoard()">Todo</a>
+                    <a class="nav-link" (click)= "showPublishedTodoBoard()">Todo pubblicati</a>
                 </li>
-                <li class = "nav-item" [ngClass]="{'nav-item': true, 'active': activatedBoard === 1}">
+
+                <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 1}">
+                    <a class="nav-link" (click)= "showCompletedTodoBoard()">Todo completati</a>
+                </li>
+
+                <li class = "nav-item" [ngClass]="{'nav-item': true, 'active': activatedBoard === 2}">
                     <a class="nav-link" (click) = "showEventBoard()">Eventi</a>
                 </li>
               
-
-            </ul>
+             </ul>
         </div>
     </nav>
     <div style="padding: 25px">

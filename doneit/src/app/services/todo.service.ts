@@ -42,6 +42,10 @@ export class TodoService {
     return this.httpClient.get<Todo>(`${API_URL}/get-todo/${todoId}`)
   }
 
+  getGenericTodo(todoId){
+    return this.httpClient.get<Todo>(`${API_URL}/get-generic-todo/${todoId}`)
+  }
+
   updateTodo(todo){
     return this.httpClient.put<ResponseMessage>(`${API_URL}/update-todo`,todo)
   }

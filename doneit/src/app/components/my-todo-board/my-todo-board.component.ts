@@ -43,7 +43,6 @@ export class MyTodoBoardComponent implements OnInit {
     } else {
       this.getMyTodoList('accepted')
     }
-
   }
 
   closeModal() {

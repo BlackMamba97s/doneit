@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EventService } from '../services/event.service';
 import { DomSanitizer } from '@angular/platform-browser';
-import { Event } from '../components/event/event.component';
+import { RefreshService } from '../services/refresh.service';
 import { EventPartecipation } from '../models/eventPartecipations';
+import { Event } from '../components/event/event.component';
 
 @Component({
   selector: 'app-event-board',
@@ -17,10 +18,14 @@ export class EventBoardComponent implements OnInit {
   isPartecipantsModalOpen = false
   partecipants: EventPartecipation[] = []
 
-  constructor(private eventService: EventService, private sanitizer: DomSanitizer) { }
+  constructor(private eventService: EventService,
+    private sanitizer: DomSanitizer, private refreshService: RefreshService) { }
 
   ngOnInit() {
     this.getActiveEvents()
+    this.refreshService.eventRefreshMessage.subscribe(m => {
+      this.getActiveEvents()
+    })
   }
 
   getActiveEvents() {
