@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'list-todos', component: ListTodoComponent, canActivate: [RouteGuardService] },
   { path: 'todo-card', component: TodoCardComponent },
   { path: 'logout', component: LogoutComponent, canActivate: [RouteGuardService] },
-  { path: 'show-my-profile', component: ProfileComponent, canActivate: [RouteGuardService] },
+  // da cancellare: { path: 'show-my-profile', component: ProfileComponent, canActivate: [RouteGuardService] },
   { path: 'show-profile/:username', component: UserProfileComponent, canActivate: [RouteGuardService] },
   { path: 'complete-register', component: CompleteRegisterComponent, canActivate: [RouteGuardService] },
   { path: "my-todo-board", component: MyTodoBoardComponent, canActivate: [RouteGuardService] },

@@ -112,4 +112,10 @@ export class UserProfileComponent implements OnInit {
   }
 
 
+  isMyProfile(){
+    return this.username === sessionStorage.getItem("username")
+  }
+  
+
+
 }

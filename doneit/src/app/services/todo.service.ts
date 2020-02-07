@@ -34,6 +34,10 @@ export class TodoService {
     return this.httpClient.get<Todo[]>(`${API_URL}/todo-list/users/`+username+"/state/"+state)
   }
 
+  getProfileTodoList(username){
+    return this.httpClient.get<Todo[]>(`${API_URL}/profile-todo-list/users/` + username)
+  }
+
   deleteTodo(todoId){
     return this.httpClient.delete(`${API_URL}/delete-todo/${todoId}`)
   }

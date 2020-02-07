@@ -11,7 +11,7 @@
                     Bacheca
                 </div>
 
-                <div class="list-group-item" routerLink="/show-my-profile" routerLinkActive="active-item"
+                <div class="list-group-item" routerLink={{getMyProfileLink()}} routerLinkActive="active-item"
                     (mouseover)="selectActive(1)" (mouseout)="selectActive(-1)">
 
                     <span [ngClass]="{'default-fa': iconNumber != 1, 'active-fa': iconNumber === 1}">

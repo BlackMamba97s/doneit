@@ -13,9 +13,9 @@
                             <h2 class="card-title text-center">@{{personalCard.user.username}}
 
                                 <button class="btn  btn-success btn-sm" (click)="followUser(personalCard.user.username)"
-                                    *ngIf="!alreadyFollow">segui</button>
-                                <button class="btn  btn-warning btn-sm" *ngIf="alreadyFollow">segui già</button>
-                                <button class="btn  btn-info btn-sm">chat</button>
+                                    *ngIf="!alreadyFollow && !isMyProfile()">segui</button>
+                                <button class="btn  btn-warning btn-sm" *ngIf="alreadyFollow && !isMyProfile()">segui già</button>
+                                <button *ngIf = "!isMyProfile()" class="btn  btn-info btn-sm">chat</button>
                             </h2>
                             <h6 class="card-title text-center">{{personalCard.university}}
                             </h6>

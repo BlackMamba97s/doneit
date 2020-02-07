@@ -34,6 +34,19 @@
     font-size: x-large;
   }
 
+  .modal-list{
+    overflow-y: scroll;
+  }
+ 
+
+  .row{
+    margin:20px;
+  }
+
+  .modal-user{
+    font-size: large;
+  }
+
    /* The Close Button */
    .close {
     color: #aaaaaa;
