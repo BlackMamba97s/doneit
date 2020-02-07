@@ -12,5 +12,4 @@ export class PersonalCard {
     base64StringImage: string;
     user = new User("", "");
     imageUrl: Url
-
 }

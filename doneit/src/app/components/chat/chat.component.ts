@@ -4,11 +4,7 @@ import { UserService } from 'src/app/services/user.service';
 import { PersonalCard } from 'src/app/models/personal-card/personal-card';
 import { ChatMessage, SocketChatMessage } from 'src/app/models/chat-message';
 import { ChatService } from 'src/app/services/chat.service';
-<<<<<<< Updated upstream
 
-=======
-import { WebSocketAPI } from 'src/app/services/WebSocketApi';
->>>>>>> Stashed changes
 
 @Component({
   selector: 'app-chat',
@@ -19,11 +15,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   @ViewChild('scrollMe', { static: false }) private myScrollContainer: ElementRef;
 
-<<<<<<< Updated upstream
   // private webSocketApi = new WebSocketAPI();
-=======
-  private webSocketApi = new WebSocketAPI();
->>>>>>> Stashed changes
 
   username: string
   private personalCards: PersonalCard[]
@@ -37,15 +29,11 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   private map: Map<string, ChatMessage[]> = new Map()
   private chatInfo: Map<String, boolean> = new Map()
   private lastMessage: Map<String, String> = new Map()
-<<<<<<< Updated upstream
   private firstIterationIgnore: boolean = false
-=======
->>>>>>> Stashed changes
 
   constructor(private userService: UserService, private chatService: ChatService) { }
 
   ngOnInit() {
-<<<<<<< Updated upstream
     this.username = sessionStorage.getItem("username")
     this.chatService.socketChatMessageSubject.subscribe(
       result => {
@@ -58,20 +46,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
       error => {
       }
     )
-=======
-    this.webSocketApi.socketChatMessageSubject.subscribe(
-      result => {
-        let socketChatMessage = result
-        if (socketChatMessage.content) {
-          this.addReceivedMessage(socketChatMessage)
-        }
-      },
-      error => {
-
-      }
-    )
-    this.webSocketApi.connect()
->>>>>>> Stashed changes
     this.scrollToBottom();
     this.userService.getAllUsers().subscribe(
       result => {
@@ -82,11 +56,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   }
 
   ngOnDestroy() {
-<<<<<<< Updated upstream
 
-=======
-    this.webSocketApi.disconnect()
->>>>>>> Stashed changes
   }
 
   ngAfterViewChecked() {
@@ -111,10 +81,6 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   toBeRead(i: number) {
     let username = this.personalCards[i].user.username
-<<<<<<< Updated upstream
-=======
-    console.log(username + " " + this.chatInfo[username])
->>>>>>> Stashed changes
     return this.chatInfo[username]
   }
 
@@ -145,11 +111,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   sendMessage() {
     let userTo = this.currentUser.user.username
-<<<<<<< Updated upstream
     this.chatService.sendChatMessage(userTo, this.sendingMessage)
-=======
-    this.webSocketApi.sendChatMessage(userTo, this.sendingMessage)
->>>>>>> Stashed changes
     this.addSentMessage(userTo)
     this.sendingMessage = ''
   }
