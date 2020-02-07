@@ -1,5 +1,5 @@
 export class Category {
 
-    constructor(private id: number, private name: string, private cfuPrice: number){}
+    constructor(private id: number, private name: string, public cfuPrice: number){}
 
 }

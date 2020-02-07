@@ -9,6 +9,8 @@ import { TodoCardComponent } from '../todo-card/todo-card.component';
 import { TodoBoardComponent } from '../home/todo-board/todo-board.component';
 import {MessageCode} from 'src/app/models/response-message/message-code'
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
+import { UserService } from 'src/app/services/user.service';
+import { PersonalCard } from 'src/app/models/personal-card/personal-card';
 
 @Component({
   selector: 'app-todo',
@@ -24,6 +26,7 @@ export class TodoComponent implements OnInit {
 
   constructor(private todoService: TodoService, 
     private categoryService: CategoryService,
+    private userService: UserService,
     private activatedRoute: ActivatedRoute,
     private router: Router) { }
 
@@ -45,8 +48,13 @@ export class TodoComponent implements OnInit {
     this.todoService.createTodo(this.todo).subscribe(
       response => {
         console.log(response)
+        let ps = this.userService.getPersonalCard()
+        
+        ps.wallet.cfu = ps.wallet.cfu - this.todo.category.cfuPrice
+        
+        this.userService.updatePersonalCard(ps)
         this.todoService.setTodoCreationResponse(MessageCode.TODO_CREATED)
-        this.cleanFields()
+        this.cleanFields();
       },
       error => {
         console.log(error)

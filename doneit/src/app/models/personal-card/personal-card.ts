@@ -1,5 +1,6 @@
 import { User } from '../user/user.model';
 import { Url } from 'url';
+import { Wallet } from '../wallet';
 
 export class PersonalCard {
 
@@ -11,5 +12,6 @@ export class PersonalCard {
     done: boolean;
     base64StringImage: string;
     user = new User("", "");
-    imageUrl: Url
+    imageUrl: Url;
+    wallet: Wallet = new Wallet();
 }

@@ -39,6 +39,10 @@ export class UserService {
     this.personalCardSubject.next(result)
   }
 
+  getPersonalCard(){
+    return this.personalCardSubject.getValue()
+  }
+
   getUserPersonalCard(username) {
     return this.httpClient.get<PersonalCard>(`${API_URL}/user-personal-card/${username}`).pipe(
       map(
