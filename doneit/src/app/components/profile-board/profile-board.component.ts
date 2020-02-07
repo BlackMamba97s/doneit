@@ -77,7 +77,7 @@ export class ProfileBoardComponent implements OnInit {
     if ($event) {
       this.currentTodo = $event
     } else {
-      this.showPublishedTodoBoard()
+      this.showTodoBoard()
     }
   }
 
