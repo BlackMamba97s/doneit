@@ -7,6 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { NgForm } from '@angular/forms';
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
+import { EventPartecipation } from 'src/app/models/eventPartecipations';
 
 
 @Component({
