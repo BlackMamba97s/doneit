@@ -22,6 +22,8 @@ export class UserInfoComponent implements OnInit {
     this.iconNumber = number
   }
 
-
+  getMyProfileLink(){
+    return "/show-profile/" + sessionStorage.getItem("username")
+  }
 
 }

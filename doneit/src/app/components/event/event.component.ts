@@ -69,7 +69,7 @@ export class Event {
   place: string
   placeId: string
   user: User
-  eventPartecipations: EventPartecipation[] = []
+  eventPartecipations: EventPartecipation[]
 
   constructor() { }
 }

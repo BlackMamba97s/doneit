@@ -17,6 +17,7 @@ export class ProfileBoardComponent implements OnInit {
   todoList: Todo[]
   eventList: Event[]
   @Input() username: string
+  currentTodo: Todo
 
   isMapOpen = false
   placeId: string
@@ -24,13 +25,13 @@ export class ProfileBoardComponent implements OnInit {
   constructor(private todoService: TodoService, private eventService: EventService, private sanitizer: DomSanitizer) { }
 
   ngOnInit(){
-    this.showPublishedTodoBoard()
+    this.showTodoBoard()
   }
 
-  showPublishedTodoBoard(){
+  showTodoBoard(){
     this.activatedBoard = 0
     this.eventList = null
-    this.todoService.getTodoListByUserAndState(this.username,"published").subscribe(
+    this.todoService.getProfileTodoList(this.username).subscribe(
       response => {
         console.log(response)
         this.todoList = response
@@ -40,21 +41,10 @@ export class ProfileBoardComponent implements OnInit {
       }
     )
 
-  }
 
-  showCompletedTodoBoard(){
-    this.activatedBoard = 1
-    this.eventList = null
-    this.todoService.getTodoListByUserAndState(this.username,"completed").subscribe(
-      response => {
-        console.log(response)
-        this.todoList = response
-      },
-      error => {
-        console.log(error)
-      }
-    )
+
   }
+  
 
   showEventBoard(){
     this.activatedBoard = 2
@@ -81,5 +71,17 @@ export class ProfileBoardComponent implements OnInit {
 
   sanitizeUrl(){
     return this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyB1A4WVaFhrtCkvVdpx_cobXShk_RGtW-8&q=place_id:" + this.placeId)
+  }
+
+  openModal($event) {
+    if ($event) {
+      this.currentTodo = $event
+    } else {
+      this.showTodoBoard()
+    }
+  }
+
+  closeModal() {
+    this.currentTodo = null;
   }
 }
