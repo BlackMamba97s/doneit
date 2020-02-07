@@ -37,6 +37,18 @@ export class MyTodoBoardComponent implements OnInit {
     )
   }
 
+  getJoinedTodoList() {
+    this.activatedBoard = 'pending'
+    this.todoService.getJoinedTodo().subscribe(
+      result => {
+        this.todoList = result
+      },
+      error => {
+
+      }
+    )
+  }
+
   receiveMessage($event) {
     if ($event) {
       this.currentTodo = $event

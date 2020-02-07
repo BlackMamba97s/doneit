@@ -10,6 +10,7 @@
 
                 </div>
                 <div class="inbox_chat">
+<<<<<<< Updated upstream
                     <div *ngFor="let p of personalCards; let i = index">
                         <div class="chat_list" *ngIf="username !== p.user.username"
                             [ngClass]="{'active_chat': isActive(i)}">
@@ -24,6 +25,20 @@
                                         {{lastMessage[p.user.username]}}</p>
                                     <p *ngIf="!lastMessage[p.user.username]">Conversazione con {{p.user.username}}</p>
                                 </div>
+=======
+                    <div class="chat_list" *ngFor="let p of personalCards; let i = index"
+                        [ngClass]="{'active_chat': isActive(i)}">
+                        <div class="chat_people" (click)="getMessage(p, i)">
+                            <div class="chat_img"> <img class="md-avatar rounded-circle" [src]="p.base64StringImage"
+                                    alt="sunil" height="30px" width="30px"> </div>
+                            <div class="chat_ib">
+                                <h5 [ngClass]="{'chat_ib_active': toBeRead(i)}">
+                                    {{p.user.username}} <span class="chat_date"></span>
+                                </h5>
+                                <p *ngIf="lastMessage[p.user.username]" [ngClass]="{'chat_ib_active': toBeRead(i)}">
+                                    {{lastMessage[p.user.username]}}</p>
+                                <p *ngIf="!lastMessage[p.user.username]">Conversazione con {{p.user.username}}</p>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>
@@ -48,7 +63,11 @@
                         <div class="outgoing_msg" *ngIf="isSent(c)">
                             <div class="sent_msg">
                                 <p>{{c.content}}</p>
+<<<<<<< Updated upstream
                                 <span class="time_date"></span>
+=======
+                                <span class="time_date"> 11:01 AM | June 9</span>
+>>>>>>> Stashed changes
                             </div>
                         </div>
                     </div>

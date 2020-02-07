@@ -73,4 +73,8 @@ export class TodoService {
   undoAcceptProposal(todoId){
     return this.httpClient.put<any>(`${API_URL}/undo-accept-proposal/todo/` + todoId,null)
   }
+
+  getJoinedTodo(){
+    return this.httpClient.get<Todo[]>(`${API_URL}/todo/get-joined-todo`)
+  }
 }

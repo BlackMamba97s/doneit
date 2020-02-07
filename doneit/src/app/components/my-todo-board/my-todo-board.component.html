@@ -10,7 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'published'}">
-              <a class="nav-link" (click)="getMyTodoList('published')">Pubblicati</a>
+              <a class="nav-link" (click)="getMyTodoList('published')">In corso</a>
             </li>
             <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'accepted'}">
               <a class="nav-link" (click)="getMyTodoList('accepted')">Accettati</a>
@@ -18,8 +18,8 @@
             <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'completed'}">
               <a class="nav-link" (click)="getMyTodoList('completed')">Conclusi</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" (click)="getMyTodoList('pending')">In attesa</a>
+            <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 'pending'}">
+              <a class="nav-link" (click)="getJoinedTodoList()">In attesa</a>
             </li>
           </ul>
         </div>
