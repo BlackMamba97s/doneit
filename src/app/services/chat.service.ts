@@ -2,7 +2,7 @@ import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { API_URL } from '../constants/constant';
+import { API_URL, WS_URL } from '../constants/constant';
 import { ChatMessage, SocketChatMessage } from '../models/chat-message';
 import { BehaviorSubject } from 'rxjs';
 
@@ -43,7 +43,7 @@ export class ChatService {
 
   connect() {
 
-    let socket = new SockJS(`${API_URL}/gs-guide-websocket`);
+    let socket = new SockJS(`${WS_URL}/gs-guide-websocket`);
     this.stompClient = Stomp.over(socket);
     const _this = this;
     _this.stompClient.connect({
