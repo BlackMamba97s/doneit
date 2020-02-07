@@ -45,3 +45,6 @@
      margin: 12px !important;
  }
 
+.card-body{
+    background-color: white;
+}

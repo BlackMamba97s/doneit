@@ -25,30 +25,26 @@
         </div>
       </nav>
 
-      <div style="margin: 25px">
+      <div style="margin: 25px" *ngIf="!activatedBoard === 'pending'">
         <div *ngFor="let t of todoList">
           <app-my-todo-card (messageEvent)="receiveMessage($event)" [todo]="t"></app-my-todo-card>
         </div>
 
       </div>
+
+
+      <div style="margin: 25px" *ngIf="activatedBoard === 'pending'">
+        <div *ngFor="let t of todoList">
+          <app-todo-card (messageEvent)="openModal($event)" [todo]="t"></app-todo-card>
+        </div>
+      </div>
+
+
     </div>
 
 
   </div>
 
-  <!-- <div class="row">
-    <div class="col-3"></div>
-    <div class="col-2"><a (click)="getMyTodoList('published')">PUBLISHED</a></div>
-    <div class="col-2"><a (click)="getMyTodoList('accepted')">ACCEPTED</a></div>
-    <div class="col-2"><a (click)="getMyTodoList('completed')">TERMINATED</a></div>
-    <div class="col-3"></div>
-    <br><br>
-    <div class="col-sm-12 no-gutters" style="background-color: white;">
-      <div *ngFor="let t of todoList">
-        <app-my-todo-card (messageEvent)="receiveMessage($event)" [todo]="t"></app-my-todo-card>
-      </div>
-    </div>
-  </div> -->
 </div>
 
 
@@ -75,4 +71,17 @@
     </div>
   </div>
 
+</div>
+
+
+<div *ngIf="currentTodoPending" (click)="closeModal()" id="myModal" class="modal">
+  <div class="modal-content">
+    <span (click)="closeModal()" class="close">×</span>
+    <span id="modal-title">Utenti proposti</span>
+    <div class="modal-list">
+      <div class="row" *ngFor="let proposal of currentTodoPending.proposals">
+        <div class="modal-user">{{proposal.user.username}}</div>
+      </div>
+    </div>
+  </div>
 </div>

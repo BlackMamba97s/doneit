@@ -12,6 +12,7 @@ export class MyTodoBoardComponent implements OnInit {
 
   todoList: Todo[];
   currentTodo: Todo;
+  currentTodoPending: Todo
   activatedBoard: string
   username: string = ''
 
@@ -38,10 +39,12 @@ export class MyTodoBoardComponent implements OnInit {
   }
 
   getJoinedTodoList() {
+    console.log("chiamata")
     this.activatedBoard = 'pending'
     this.todoService.getJoinedTodo().subscribe(
       result => {
         this.todoList = result
+        console.log(result)
       },
       error => {
 
@@ -59,6 +62,7 @@ export class MyTodoBoardComponent implements OnInit {
 
   closeModal() {
     this.currentTodo = null;
+    this.currentTodoPending = null;
   }
 
   acceptProposal(proposal) {
@@ -105,6 +109,26 @@ export class MyTodoBoardComponent implements OnInit {
   updateProposal(proposal, newState) {
     let i = this.currentTodo.proposals.indexOf(proposal);
     this.currentTodo.proposals[i].state = newState
+  }
+
+  openModal($event) {
+    if ($event) {
+      this.currentTodoPending = $event
+    } else {
+      this.showAllTodo()
+    }
+  }
+
+  showAllTodo() {
+    this.todoService.getAllTodo().subscribe(
+      response => {
+        this.todoList = response;
+        console.log(response)
+      },
+      error => {
+        console.log(error)
+      }
+    )
   }
 
 }
