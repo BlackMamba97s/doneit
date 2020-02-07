@@ -5,6 +5,7 @@ import { NgbTypeaheadConfig } from '@ng-bootstrap/ng-bootstrap';
 import { User } from 'src/app/models/user/user.model';
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { EventPartecipation } from 'src/app/models/eventPartecipations';
 
 @Component({
   selector: 'app-event',
@@ -19,14 +20,14 @@ export class EventComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.eventService.eventResponseMessage.subscribe( e =>{
+    this.eventService.eventResponseMessage.subscribe(e => {
       this.eventResponseMessage = e
     });
   }
 
 
-  handleEventCreation(){
-    
+  handleEventCreation() {
+
     this.eventService.createEvent(this.eventPost).subscribe(
       response => {
         console.log(response)
@@ -36,19 +37,19 @@ export class EventComponent implements OnInit {
         console.log(error)
       }
     )
-    
-    
+
+
   }
 
-  handleAddressChange($event){
+  handleAddressChange($event) {
     this.eventPost.place = $event.formatted_address
     this.eventPost.placeId = $event.place_id
-   }
+  }
 
-   
+
 }
 
-export class Event{
+export class Event {
   id: number
   title: string
   description: string
@@ -56,6 +57,7 @@ export class Event{
   place: string
   placeId: string
   user: User
+  eventPartecipations: EventPartecipation[] = []
 
-  constructor(){}
+  constructor() { }
 }

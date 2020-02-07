@@ -4,6 +4,7 @@ import { Todo } from '../todo/todo.component';
 import { TodoService } from 'src/app/services/todo.service';
 import { EventService } from 'src/app/services/event.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Event } from '../event/event.component';
 
 @Component({
   selector: 'app-profile-board',

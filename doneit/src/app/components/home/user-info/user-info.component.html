@@ -31,13 +31,25 @@
 
                 </div>
 
+                <div class="list-group-item" routerLink="/my-events-board" routerLinkActive="active-item"
+                    (mouseover)="selectActive(5)" (mouseout)="selectActive(-1)">
+
+                    <span [ngClass]="{'default-fa': iconNumber != 5, 'active-fa': iconNumber === 5}">
+                        <i class="fa fa-calendar" routerLinkActive="active-fa"></i>
+                    </span>
+
+                    I miei Eventi
+
+                </div>
+
+
                 <div class="list-group-item" routerLink="/chat" routerLinkActive="active-item"
                     (mouseover)="selectActive(3)" (mouseout)="selectActive(-1)">
 
                     <span [ngClass]="{'default-fa': iconNumber != 3, 'active-fa': iconNumber === 3}">
                         <i class="fa fa-comment" routerLinkActive="active-fa"></i>
                     </span>
-                    
+
                     Chat
                 </div>
 

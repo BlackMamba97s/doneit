@@ -12,8 +12,9 @@
                         <div class="card-body text-left">
                             <h2 class="card-title text-center">@{{personalCard.user.username}}
 
-                                <button class="btn  btn-success btn-sm"
-                                    (click)="followUser(personalCard.user.username)">segui</button>
+                                <button class="btn  btn-success btn-sm" (click)="followUser(personalCard.user.username)"
+                                    *ngIf="!alreadyFollow">segui</button>
+                                <button class="btn  btn-warning btn-sm" *ngIf="alreadyFollow">segui già</button>
                                 <button class="btn  btn-info btn-sm">chat</button>
                             </h2>
                             <h6 class="card-title text-center">{{personalCard.university}}
@@ -43,7 +44,11 @@
         </div>
     </div>
 
-    <app-profile-board [username] = personalCard.user.username></app-profile-board>
+    <div class="row justify-content-center">
+        <div class="col-xl-9">
+            <app-profile-board [username]=personalCard.user.username></app-profile-board>
+        </div>
+    </div>
 
     <!--
     <div class="row justify-content-around no-gutters">

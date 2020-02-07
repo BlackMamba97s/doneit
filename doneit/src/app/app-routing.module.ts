@@ -16,6 +16,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { EventComponent } from './components/event/event.component';
 import { SearchComponent } from './search/search.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { MyEventComponent } from './components/my-event/my-event.component';
 
 
 
@@ -33,7 +34,7 @@ const routes: Routes = [
   { path: 'show-profile/:username', component: UserProfileComponent, canActivate: [RouteGuardService] },
   { path: 'complete-register', component: CompleteRegisterComponent, canActivate: [RouteGuardService] },
   { path: "my-todo-board", component: MyTodoBoardComponent, canActivate: [RouteGuardService] },
-  { path: "event", component: EventComponent, canActivate: [RouteGuardService] },
+  { path: "my-events-board", component: MyEventComponent, canActivate: [RouteGuardService] },
   { path: "chat", component: ChatComponent, canActivate: [RouteGuardService] },
 
   // {path: 'register', component: RegisterComponent, canActivate: [RouteGuardService]},

@@ -18,6 +18,7 @@ export class UserProfileComponent implements OnInit {
   private followers: User[]
   private following: User[]
   private showCorrectPanel = 0;
+  private alreadyFollow: boolean
 
   constructor(private userService: UserService, private route: ActivatedRoute) { }
 
@@ -32,9 +33,12 @@ export class UserProfileComponent implements OnInit {
   followUser(username) {
     this.userService.followUser(username).subscribe(
       result => {
-
-
-
+        this.userService.getUserFollowers(this.username).subscribe(
+          result => {
+            this.followers = result
+            this.checkIfAlreadyFollow(result)
+          }
+        )
       },
       error => {
 
@@ -65,8 +69,10 @@ export class UserProfileComponent implements OnInit {
   private getUserFollowers() {
     this.userService.getUserFollowers(this.username).subscribe(
       result => {
-
         this.followers = result;
+        if (this.followers.length) {
+          this.checkIfAlreadyFollow(this.followers)
+        }
       }
     )
   }
@@ -86,12 +92,24 @@ export class UserProfileComponent implements OnInit {
   private subscribeRouter() {
     this.route.params.subscribe(params => {
       this.username = params['username']
+      this.alreadyFollow = false
       this.getPersonalCard()
       this.getUserFollowers()
       this.getUserFollowing()
+
     });
   }
 
+  checkIfAlreadyFollow(followers) {
+    let i = 0
+    console.log("chiamata")
+    while (i < followers.length) {
+      if (followers[i].username === sessionStorage.getItem('username')) {
+        this.alreadyFollow = true
+      }
+      i++;
+    }
+  }
 
 
 }

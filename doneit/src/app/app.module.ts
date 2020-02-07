@@ -41,6 +41,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ChatboxComponent } from './chatbox/chatbox.component';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import { ProfileBoardComponent } from './components/profile-board/profile-board.component';
+import { MyEventComponent } from './components/my-event/my-event.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { ProfileBoardComponent } from './components/profile-board/profile-board.
     SearchComponent,
     ChatboxComponent,
     ProfileBoardComponent,
+    MyEventComponent,
   ],
   imports: [
     GooglePlaceModule,

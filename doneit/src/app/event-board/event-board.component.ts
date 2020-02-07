@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EventService } from '../services/event.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Event } from '../components/event/event.component';
+import { EventPartecipation } from '../models/eventPartecipations';
 
 @Component({
   selector: 'app-event-board',
@@ -12,14 +14,16 @@ export class EventBoardComponent implements OnInit {
   eventList: Event[]
   isMapOpen = false
   placeId: string
+  isPartecipantsModalOpen = false
+  partecipants: EventPartecipation[] = []
 
-  constructor(private eventService: EventService,private sanitizer: DomSanitizer) { }
+  constructor(private eventService: EventService, private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
     this.getActiveEvents()
   }
 
-  getActiveEvents(){
+  getActiveEvents() {
     this.eventService.getActiveEvents().subscribe(
       response => {
         console.log(response)
@@ -31,17 +35,27 @@ export class EventBoardComponent implements OnInit {
     )
   }
 
-  openMap($event){
+  openMap($event) {
     this.placeId = $event
     this.isMapOpen = true
   }
 
-  closeMap(){
+  closeMap() {
     this.isMapOpen = false
     this.placeId = null
   }
 
-  sanitizeUrl(){
+  openPartecipantModal(event) {
+    this.isPartecipantsModalOpen = true
+    this.partecipants = event
+  }
+
+  closePartecipantsModal() {
+    this.isPartecipantsModalOpen = false;
+    this.partecipants = []
+  }
+
+  sanitizeUrl() {
     return this.sanitizer.bypassSecurityTrustResourceUrl("https://www.google.com/maps/embed/v1/place?key=AIzaSyB1A4WVaFhrtCkvVdpx_cobXShk_RGtW-8&q=place_id:" + this.placeId)
   }
 

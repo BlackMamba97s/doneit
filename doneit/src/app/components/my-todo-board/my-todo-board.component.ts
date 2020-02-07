@@ -13,12 +13,14 @@ export class MyTodoBoardComponent implements OnInit {
   todoList: Todo[];
   currentTodo: Todo;
   activatedBoard: string
+  username: string = ''
 
   constructor(private todoService: TodoService) { }
 
   ngOnInit() {
     this.getMyTodoList('published')
     this.activatedBoard = "published"
+    this.username = sessionStorage.getItem("username")
   }
 
   getMyTodoList(state) {
@@ -36,7 +38,6 @@ export class MyTodoBoardComponent implements OnInit {
   }
 
   receiveMessage($event) {
-    console.log("DIO CANE")
     if ($event) {
       this.currentTodo = $event
     } else {

@@ -13,13 +13,31 @@ export class ChatService {
 
   private stompClient = null;
   private connected = false
+  private interval;
+  private status;
+  private statusSubject: BehaviorSubject<string>
 
   socketChatMessage = new SocketChatMessage()
   socketChatMessageSubject = new BehaviorSubject<SocketChatMessage>(this.socketChatMessage)
 
 
 
+
   constructor(private httpClient: HttpClient) {
+    this.statusSubject = new BehaviorSubject(this.status)
+    this.statusSubject.subscribe(
+      result => {
+        if (result === 'disconnected') {
+          console.log("Tentativo di riconnessione in corso!")
+          setTimeout(() => {
+            this.connect();
+          }, 5000);
+        }
+        else if (result === 'connected') {
+          console.log("non devo fa niente")
+        }
+      }
+    )
     this.connect()
   }
 
@@ -31,6 +49,27 @@ export class ChatService {
     _this.stompClient.connect({
       "Auth": sessionStorage.getItem("token")
     }, function (frame) {
+      status = 'connected'
+      _this.statusSubject.next(status)
+      _this.stompClient.subscribe("/user/queue/reply", function (frame) {
+        console.log(frame)
+        let chatMessage = JSON.parse(frame.body)
+        _this.updateSocketChatMessage(chatMessage)
+      })
+    }, function () {
+      status = 'disconnected'
+      _this.statusSubject.next(status)
+    })
+  }
+
+  reconnect() {
+    let socket = new SockJS(`${API_URL}/gs-guide-websocket`);
+    this.stompClient = Stomp.over(socket);
+    const _this = this;
+    _this.stompClient.connect({
+      "Auth": sessionStorage.getItem("token")
+    }, function (frame) {
+      clearInterval(_this.interval)
       _this.stompClient.subscribe("/user/queue/reply", function (frame) {
         console.log(frame)
         let chatMessage = JSON.parse(frame.body)
@@ -39,6 +78,8 @@ export class ChatService {
     })
   }
 
+
+
   disconnect() {
     if (this.stompClient != null) {
       this.stompClient.disconnect();
@@ -46,9 +87,13 @@ export class ChatService {
 
   }
 
+  test() {
+    console.log("CIAO")
+  }
+
 
   sendChatMessage(dest, message) {
-    console.warn("Sto mandando un messaggio a " + dest)
+
     this.stompClient.send("/app/send", {
     }, JSON.stringify({
       'userTo': dest,
@@ -57,7 +102,6 @@ export class ChatService {
   }
 
   updateSocketChatMessage(chatMessage) {
-    console.warn("VIENE ESEGUITA OGNI VOLTA")
     this.socketChatMessageSubject.next(chatMessage)
   }
 
