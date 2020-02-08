@@ -1,5 +1,5 @@
 <div class="container-fluid" style="padding: 0px; background-color: #fafafa;">
-    <nav class="navbar navbar-expand-lg navbar-dark primary-color light-blue darken-3">
+    <!-- <nav class="navbar navbar-expand-sm navbar-dark primary-color light-blue darken-3">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -16,7 +16,25 @@
               
              </ul>
         </div>
+    </nav> -->
+
+    <nav class="navbar navbar-dark primary-color light-blue darken-3">
+        <div class="row" style="width: 100%">
+            <div class="navbar-nav col-12">
+                <div class="row no-gutters">
+                    <span [ngClass]="{'nav-item': true, 'active': activatedBoard === 0}" style="padding-left: 5px;
+                    padding-right: 5px">
+                        <a class="nav-link" (click)= "showTodoBoard()">Todo</a>
+                    </span>
+                    <span class="nav-item" [ngClass]="{'nav-item': true, 'active': activatedBoard === 2}">
+                        <a class="nav-link" (click)="showEventBoard()">Eventi</a>
+                    </span>
+                </div>
+            </div>
+        </div>
     </nav>
+
+
     <div style="padding: 25px">
         <div class="container">
             <div class="row">
@@ -31,7 +49,7 @@
                         <div style="height: 20px; background-color: #fafafa;"></div>
                     </div>
                 </div>
-        
+
             </div>
         </div>
     </div>
@@ -39,22 +57,21 @@
 
 <div (click)="closeMap()" *ngIf="isMapOpen" id="myModal" class="modal">
     <div class="modal-content">
-      <span (click)="closeMap()" class="close">×</span>
-      <span id="modal-title">Mappa</span>
-      <iframe height="450" frameborder="0" style="border:0"
-        [src]='sanitizeUrl()' allowfullscreen>
-      </iframe>
+        <span (click)="closeMap()" class="close">×</span>
+        <span id="modal-title">Mappa</span>
+        <iframe height="450" frameborder="0" style="border:0" [src]='sanitizeUrl()' allowfullscreen>
+        </iframe>
     </div>
 </div>
 
 <div *ngIf="currentTodo" (click)="closeModal()" id="myModal" class="modal">
     <div class="modal-content">
-      <span (click)="closeModal()" class="close">×</span>
-      <span id="modal-title">Utenti proposti</span>
-      <div class="modal-list">
-        <div class="row" *ngFor="let proposal of currentTodo.proposals">
-          <div class = "modal-user" >{{proposal.user.username}}</div>
+        <span (click)="closeModal()" class="close">×</span>
+        <span id="modal-title">Utenti proposti</span>
+        <div class="modal-list">
+            <div class="row" *ngFor="let proposal of currentTodo.proposals">
+                <div class="modal-user">{{proposal.user.username}}</div>
+            </div>
         </div>
-        </div>
-      </div>
+    </div>
 </div>

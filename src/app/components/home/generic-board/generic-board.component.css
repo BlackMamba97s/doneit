@@ -12,3 +12,11 @@ a{
     color: white !important;
     font-size: large;
 }
+
+.nav-link{
+    padding: 5px;
+}
+
+.fix{
+    text-align: right !important;
+}

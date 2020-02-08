@@ -75,7 +75,7 @@
     margin: 0;
     padding: 18px 16px 10px;
   }
-  .inbox_chat { max-height: 600px; overflow-y: scroll;}
+  .inbox_chat { height: 70vh; overflow-y: scroll;}
   
   .active_chat{ background:#ebebeb;}
   
@@ -148,7 +148,7 @@
   }
   .messaging { padding: 0 0 50px 0;}
   .msg_history {
-    height: 516px;
+    height: 60vh;
     overflow-y: auto;
   }
 
@@ -156,3 +156,5 @@
     background:#ebebeb;
     cursor: pointer;
   }
+
+  

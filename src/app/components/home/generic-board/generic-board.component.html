@@ -1,44 +1,42 @@
 <div class="container-fluid" style="padding: 0px; background-color: #fafafa;">
-    <nav class="navbar navbar-expand-lg navbar-dark primary-color light-blue darken-3">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li [ngClass]="{'nav-item': true, 'active': activatedBoard === 0}">
-                    <a class="nav-link" (click)= "showBoard(0)">Todo</a>
-                </li>
-                <li class = "nav-item" [ngClass]="{'nav-item': true, 'active': activatedBoard === 1}">
-                    <a class="nav-link" (click) = "showBoard(1)">Eventi</a>
-                </li>
-              
+    <nav class="navbar navbar-dark primary-color light-blue darken-3">
+        <div class="row" style="width: 100%">
+            <div class="navbar-nav col-11">
+                <div class="row no-gutters">
+                    <span [ngClass]="{'nav-item': true, 'active': activatedBoard === 0}" style="padding-left: 5px;
+                    padding-right: 5px">
+                        <a class="nav-link" (click)="showBoard(0)">Todo</a>
+                    </span>
+                    <span class="nav-item" [ngClass]="{'nav-item': true, 'active': activatedBoard === 1}">
+                        <a class="nav-link" (click)="showBoard(1)">Eventi</a>
+                    </span>
+                </div>
+            </div>
 
-            </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
+            <div class="navbar-nav col-1 align-self-center fix">
+                <span class="nav-item">
                     <a data-toggle="modal" data-target="#basicExampleModal"> <i class="fa fa-plus-circle"
                             style="color: whitesmoke; font-size: 1.5rem;"></i></a>
-                </li>
-            </ul>
+                </span>
+            </div>
         </div>
     </nav>
     <div style="padding: 25px">
-        <app-todo-board *ngIf= "activatedBoard === 0"></app-todo-board>
-        <app-event-board *ngIf= "activatedBoard === 1"></app-event-board>
+        <app-todo-board *ngIf="activatedBoard === 0"></app-todo-board>
+        <app-event-board *ngIf="activatedBoard === 1"></app-event-board>
     </div>
 </div>
 
 
 
 <!-- Modal -->
-<div (click) = "closeModal()" class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div (click)="closeModal()" class="modal fade" id="basicExampleModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Cosa vuoi creare?</h5>
-                <button (click) = "closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>

@@ -89,3 +89,10 @@ nav{
     font-size: 12px; 
     text-align: center; 
 } 
+
+@media screen and (min-width: 992px) {
+    .logout-link {
+      display:none
+    }
+  }
+  
