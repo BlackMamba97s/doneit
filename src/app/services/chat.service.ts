@@ -38,7 +38,6 @@ export class ChatService {
         }
       }
     )
-    this.connect()
   }
 
   connect() {
