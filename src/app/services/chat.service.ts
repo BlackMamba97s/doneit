@@ -86,11 +86,6 @@ export class ChatService {
 
   }
 
-  test() {
-    console.log("CIAO")
-  }
-
-
   sendChatMessage(dest, message) {
 
     this.stompClient.send("/app/send", {
@@ -111,8 +106,8 @@ export class ChatService {
   //   return this.httpClient.post<any>(`${API_URL}/chat/send-message`, chatMessage);
   // }
 
-  // getConversation(username) {
-  //   return this.httpClient.get<ChatMessage[]>(`${API_URL}/chat/get-conversation/${username}`);
+  getConversation(username) {
+    return this.httpClient.get<ChatMessage[]>(`${API_URL}/chat/get-conversation/${username}`);
 
-  // }
+  }
 }

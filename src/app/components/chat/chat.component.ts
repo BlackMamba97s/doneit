@@ -86,10 +86,14 @@ export class ChatComponent implements OnInit, AfterViewChecked {
 
   //carica la lista di messaggi corretta
   loadChatContent(username) {
-    if (this.map[username] === undefined) {
-      this.map[username] = []
-    }
-    this.chatMessage = this.map[username]
+
+
+    this.chatService.getConversation(username).subscribe(
+      result => {
+        this.map[username] = result
+        this.chatMessage = result
+      }
+    )
 
   }
 

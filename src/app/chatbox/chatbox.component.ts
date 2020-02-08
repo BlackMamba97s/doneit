@@ -124,9 +124,13 @@ export class ChatboxComponent implements OnInit {
     this.closeChat = false;
     this.showChat = true;
     this.activeUser = p.user.username
-    console.log("Ora tolgo: " + this.activeUser)
-    this.chatInfo[this.activeUser] = null
-    this.currentChat = this.chatContent[this.activeUser]
+
+    this.chatService.getConversation(this.activeUser).subscribe(
+      result => {
+        this.chatInfo[this.activeUser] = null
+        this.chatContent[this.activeUser] = result
+        this.currentChat = this.currentChat = result
+      })
   }
 
 
