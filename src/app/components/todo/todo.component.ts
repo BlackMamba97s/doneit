@@ -102,10 +102,7 @@ export class TodoComponent implements OnInit {
   }
   
   cleanFields(){
-    this.todo.title = ""
-    this.todo.description = ""
-    this.todo.expirationDate = null
-    this.todo.category = null
+    this.todo = new Todo()
   }
 
   checkFields(){
