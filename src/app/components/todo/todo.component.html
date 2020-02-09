@@ -1,23 +1,35 @@
 <div *ngIf="!todoId" class="container">
-    <form (ngSubmit)='handleTodoCreation()'>
+    <form (ngSubmit)='handleTodoCreation()' #todoForm = "ngForm">
         <fieldset class="form-group">
             <label>Titolo: </label>
-            <input type="text" class="form-control" name="title" [(ngModel)]='todo.title'>
+
+            <input type="text" class="form-control"
+            [ngClass]="{'is-valid': !title.invalid && todo.title, 'is-invalid': title.invalid && todo.title == ''}" 
+             #title = "ngModel" name="title" [(ngModel)]='todo.title' required = "required">
         </fieldset>
 
         <fieldset class="form-group">
             <label>Descrizione: </label>
-            <input type="text" class="form-control" name="description" [(ngModel)]='todo.description'>
+
+            <input type="text" class="form-control"
+            [ngClass]="{'is-valid': !description.invalid && todo.description, 'is-invalid': description.invalid && todo.description == ''}"
+             #description = "ngModel" name="description" [(ngModel)]='todo.description' required = "required">
         </fieldset>
 
         
         <fieldset class = "form-group">
             <label>Data di scadenza: </label>
-            <input type = "date" name = "Scadenza" [(ngModel)] = "todo.expirationDate">
+
+            <input type = "date" class = "form-control" 
+            [ngClass]="{'is-valid': todo.expirationDate && !checkDate(), 'is-invalid':checkDate()}"
+             name = "Scadenza" [(ngModel)] = "todo.expirationDate" required = "required">
         </fieldset>
         
         <fieldset class = "form-group">
-            <select class="browser-default custom-select custom-select-lg mb-3" [(ngModel)]="todo.category" name="selectedValue">
+            <select class="browser-default custom-select custom-select-lg mb-3 form-control"
+            [ngClass]="{'is-valid': !selectedValue.invalid && !checkCategory(), 'is-invalid': checkCategory()}"
+            #selectedValue = "ngModel" [(ngModel)]="todo.category" name="selectedValue" required = "required">
+
                 <option *ngFor="let category of categories" [ngValue]="category">{{category.name}} ({{category.cfuPrice}} cfu)</option>
             </select>
         </fieldset>

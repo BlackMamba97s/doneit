@@ -45,25 +45,26 @@ export class TodoComponent implements OnInit {
 
 
   handleTodoCreation() {
-    this.todoService.createTodo(this.todo).subscribe(
-      response => {
-        console.log(response)
-        let ps = this.userService.getPersonalCard()
-        
-        ps.wallet.cfu = ps.wallet.cfu - this.todo.category.cfuPrice
-        
-        this.userService.updatePersonalCard(ps)
-        this.todoService.setTodoCreationResponse(MessageCode.TODO_CREATED)
-        this.cleanFields();
-      },
-      error => {
-        console.log(error)
-        if(error.error.messageCode === MessageCode.CFU_INSUFFICIENT){
-          this.todoService.setTodoCreationResponse(MessageCode.CFU_INSUFFICIENT)
+    if(this.checkFields()){
+      this.todoService.createTodo(this.todo).subscribe(
+        response => {
+          console.log(response)
+          let ps = this.userService.getPersonalCard()
+          
+          ps.wallet.cfu = ps.wallet.cfu - this.todo.category.cfuPrice
+          
+          this.userService.updatePersonalCard(ps)
+          this.todoService.setTodoCreationResponse(MessageCode.TODO_CREATED)
+          this.cleanFields();
+        },
+        error => {
+          console.log(error)
+          if(error.error.messageCode === MessageCode.CFU_INSUFFICIENT){
+            this.todoService.setTodoCreationResponse(MessageCode.CFU_INSUFFICIENT)
+          }
         }
-      }
-    )
-      
+      )
+    }
   }
 
   handleTodoUpdate() {
@@ -107,6 +108,53 @@ export class TodoComponent implements OnInit {
     this.todo.category = null
   }
 
+  checkFields(){
+   
+       if(!this.todo.title){
+         this.todo.title = ''
+         return false
+       }
+  
+       if(!this.todo.description){
+         this.todo.description = ''
+         return false
+       }
+  
+       if(!this.todo.expirationDate){
+         this.todo.expirationDate = new Date("")
+         return false
+       }
+
+       if(!this.todo.category){
+         this.todo.category = new Category(null,'',null)
+         return false
+       }
+  
+       return true
+     }
+  
+     checkDate(){
+      if(this.todo.expirationDate){
+        if(this.todo.expirationDate.toString() === "Invalid Date"){
+          return true
+        }else{
+          return false
+        }
+      }else{
+        return false
+      }
+    }
+
+    checkCategory(){
+      if(this.todo.category){
+        if(this.todo.category.name == ''){
+          return true
+        }else{
+          return false
+        }
+      }
+      return false
+    }
 }
 
 

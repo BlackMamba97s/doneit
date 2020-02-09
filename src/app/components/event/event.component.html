@@ -1,32 +1,45 @@
 <div class="container">
-    <form (ngSubmit)='handleEventCreation()'>
+    <form (ngSubmit)='handleEventCreation()' #eventForm = "ngForm">
         <fieldset class="form-group">
             <label>Titolo: </label>
-            <input type="text" class="form-control" name="title" [(ngModel)]='eventPost.title'>
+
+            <input type="text" class = "form-control" 
+                [ngClass]="{'is-valid': !title.invalid && eventPost.title, 'is-invalid': title.invalid && eventPost.title == ''}"
+                #title="ngModel" name="title" [(ngModel)]='eventPost.title' required = "required"/>
         </fieldset>
 
         <fieldset class="form-group">
             <label>Descrizione: </label>
-            <input type="text" class="form-control" name="description" [(ngModel)]='eventPost.description'>
+
+            <input type="text" class="form-control" 
+            [ngClass]="{'is-valid': !description.invalid && eventPost.description, 'is-invalid': description.invalid && eventPost.description == ''}" 
+            #description = "ngModel" name="description" [(ngModel)]='eventPost.description' required = "required"/>
         </fieldset>
 
         
         <fieldset class = "form-group">
             <label>Data: </label>
-            <input type = "date" name = "Data evento" [(ngModel)] = "eventPost.date">
+
+            <input type = "date" class = "form-control" 
+            [ngClass]="{'is-valid': eventPost.date && !checkDate(), 'is-invalid':checkDate()}" 
+            #date = "ngModel" name = "Data evento" [(ngModel)] = "eventPost.date" required = "required"/>
         </fieldset>
         
         <fieldset class = "form-group">
             <label>Luogo: </label>
-            <input type = "text" name = "place" [(ngModel)] = "eventPost.place" ngx-google-places-autocomplete [options]="{
+
+            <input type = "text" class = "form-control"
+             [ngClass]="{'is-valid': !place.invalid && eventPost.place, 'is-invalid': eventPost.place == '' || (eventPost.place && !isPlaceCorrect())}" 
+             #place = "ngModel" name = "place" [(ngModel)] = "eventPost.place" ngx-google-places-autocomplete 
+             [options]="{
                 types: [],
                 componentRestrictions: { country: 'IT' }
-                }" #placesRef="ngx-places"  (onAddressChange)="handleAddressChange($event)"/>
+                }" #placesRef="ngx-places"  (onAddressChange)="handleAddressChange($event)" required = "required" />
             
         </fieldset>
 
         <div style="text-align: right;">
-            <button *ngIf="!todoId" type="submit" class="btn btn-success">Crea</button>
+            <button type="submit" class="btn btn-success">Crea</button>
         </div>
     </form>
 </div>
