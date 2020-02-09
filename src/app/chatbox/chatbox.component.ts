@@ -29,6 +29,7 @@ export class ChatboxComponent implements OnInit {
   constructor(private userService: UserService, private chatService: ChatService) { }
 
   ngOnInit() {
+    this.chatService.connect()
     this.username = sessionStorage.getItem("username")
     console.warn("OK")
     this.userService.getAllUsers().subscribe(
@@ -82,7 +83,9 @@ export class ChatboxComponent implements OnInit {
     let userTo = new User(socketChatMessage.userTo, "")
     let chatMessage = new ChatMessage(userFrom, userTo, socketChatMessage.content)
     this.chatContent[socketChatMessage.userFrom].push(chatMessage)
-    this.currentChat = this.chatContent[socketChatMessage.userFrom]
+    if (this.activeUser === socketChatMessage.userFrom) {
+      this.currentChat = this.chatContent[socketChatMessage.userFrom]
+    }
   }
 
   addSentMessage(message) {

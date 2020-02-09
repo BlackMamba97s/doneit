@@ -15,11 +15,11 @@ export class HomeComponent implements OnInit {
 
   private user = new User('', '')
 
-  constructor(private userService: UserService, private chatService: ChatService) { }
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit() {
     this.userService.getMyPersonalCard().subscribe()
-    this.chatService.connect()
   }
 
   isRegisterCompleted() {

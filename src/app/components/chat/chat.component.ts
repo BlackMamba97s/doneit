@@ -34,6 +34,7 @@ export class ChatComponent implements OnInit, AfterViewChecked {
   constructor(private userService: UserService, private chatService: ChatService) { }
 
   ngOnInit() {
+    this.chatService.connect()
     this.username = sessionStorage.getItem("username")
     this.chatService.socketChatMessageSubject.subscribe(
       result => {

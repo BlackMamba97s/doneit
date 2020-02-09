@@ -41,7 +41,7 @@ export class ChatService {
   }
 
   connect() {
-
+    this.disconnect()
     let socket = new SockJS(`${API_URL}/gs-guide-websocket`);
     this.stompClient = Stomp.over(socket);
     const _this = this;
@@ -59,6 +59,7 @@ export class ChatService {
       status = 'disconnected'
       _this.statusSubject.next(status)
     })
+
   }
 
   reconnect() {
