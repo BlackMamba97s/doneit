@@ -3,8 +3,7 @@
         <div class="card-header" style="background-color: #fafafa;">
             <ul class="nav nav-tabs card-header-tabs">
                 <li class="nav-item">
-                    <a [ngClass]="{'nav-link': true, 'active': showCorrectBody === 1}" (click)="changeBody(3)"
-                        (click)="changeBody(1)">Todo</a>
+                    <a [ngClass]="{'nav-link': true, 'active': showCorrectBody === 1}">Todo</a>
                 </li>
 
                 <!-- <li class="nav-item">
@@ -16,7 +15,7 @@
         <div class="card-body" style="background-color: #ffffff;">
 
 
-            <div *ngIf="showCorrectBody === 1">
+            <div>
                 <div class="row align-items-center ">
                     <div class="col-xl-3">
                         <a class="nav-link p-0" href="#">

@@ -25,7 +25,7 @@
         </div>
       </nav>
 
-      <div style="margin: 25px" *ngIf="!activatedBoard === 'pending'">
+      <div style="margin: 25px" *ngIf="activatedBoard !== 'pending'">
         <div *ngFor="let t of todoList">
           <app-my-todo-card (messageEvent)="receiveMessage($event)" [todo]="t"></app-my-todo-card>
         </div>
