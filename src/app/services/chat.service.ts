@@ -24,20 +24,6 @@ export class ChatService {
 
 
   constructor(private httpClient: HttpClient) {
-    this.statusSubject = new BehaviorSubject(this.status)
-    this.statusSubject.subscribe(
-      result => {
-        if (result === 'disconnected') {
-          console.log("Tentativo di riconnessione in corso!")
-          setTimeout(() => {
-            this.connect();
-          }, 5000);
-        }
-        else if (result === 'connected') {
-          console.log("non devo fa niente")
-        }
-      }
-    )
   }
 
   connect() {
@@ -55,9 +41,6 @@ export class ChatService {
         let chatMessage = JSON.parse(frame.body)
         _this.updateSocketChatMessage(chatMessage)
       })
-    }, function () {
-      status = 'disconnected'
-      _this.statusSubject.next(status)
     })
 
   }
