@@ -34,8 +34,6 @@ export class ChatService {
     _this.stompClient.connect({
       "Auth": sessionStorage.getItem("token")
     }, function (frame) {
-      status = 'connected'
-      _this.statusSubject.next(status)
       _this.stompClient.subscribe("/user/queue/reply", function (frame) {
         console.log(frame)
         let chatMessage = JSON.parse(frame.body)
