@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   errorLogin: string
   errorCode: number
-  user = new User('seppu_97', 'Password1234!')
+  user = new User('', '')
   responseMessage: ResponseMessage
 
   constructor(private loginAuth: LoginAuthenticationService, private router: Router) { }
