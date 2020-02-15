@@ -58,8 +58,8 @@
 
         <div class="col-4" *ngIf="proposal.state == 'in progress'"><button (click)="acceptProposal(proposal)"
             class="btn btn-success">accetta</button></div>
-        <div class="col-4" *ngIf="proposal.state == 'in progress'"><button (click)="refuseProposal(proposal)"
-            class="btn btn-danger">rifiuta</button></div>
+        <!--<div class="col-4" *ngIf="proposal.state == 'in progress'"><button (click)="refuseProposal(proposal)"
+            class="btn btn-danger">rifiuta</button></div>-->
 
         <div class="col-8" *ngIf="proposal.state == 'refused'"><b>Hai rifiutato questo contatto </b> <a
             (click)="undoRefuse(proposal)">Annulla</a></div>
